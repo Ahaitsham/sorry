@@ -236,6 +236,8 @@
                         <div class="pill">Vanshika</div>
                         <div class="pill">Parul</div>
                     </div>
+                    <button id="touchMeBtn" class="btn-forgive" style="margin-top:15px;">🎵 Touch Me</button>
+
                 </div>
             </header>
 
@@ -251,8 +253,8 @@
 
             <div class="poem">
                 I just wanted to say this small thing… I hope we’re good now.
-              
-            
+
+
             </div>
 
             <div class="buttons">
@@ -309,10 +311,16 @@
 
         /* Music toggle */
         const bg = document.getElementById("bgMusic");
-        let isOn = true;
-        musicBtn.onclick = () => {
-            if (isOn) { bg.pause(); isOn = false; }
-            else { bg.play(); isOn = true; }
+        let musicStarted = false;
+
+        // Touch Me button to start music
+        const touchBtn = document.getElementById("touchMeBtn");
+        touchBtn.onclick = () => {
+            if (!musicStarted) {
+                bg.play().catch(() => { });
+                musicStarted = true;
+                touchBtn.style.display = "none"; // hide button after starting
+            }
         };
 
         window.addEventListener("click", function () {
@@ -323,7 +331,7 @@
 
 
 
-        
+
 
 
     </script>
