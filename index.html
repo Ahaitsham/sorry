@@ -244,25 +244,24 @@
             <div class="message" id="mainMessage">
 
                 <p>Hey, I just wanted to clear one small thing from that night. When I called you around 12 am and you
-                    told
-                    me you were talking to Anurag and then shared your screen, I reacted bit off at that moment. I still
-                    don’t know why exactly, maybe tiredness or maybe I just overthink stupid things sometimes. I never
-                    meant
-                    to make anything weird or uncomfortable for you.</p> <br>
+                    told me you were talking to Anurag and then shared your screen, I reacted bit off at that moment. I
+                    still don’t know why exactly, maybe tiredness or maybe I just overthink stupid things sometimes. I
+                    never meant to make anything weird or uncomfortable for you.</p> <br>
+
                 <p>If it felt rude or bad from my side, that was honestly not my intention at all. What I really want to
                     say is this — you are one of the most genuine, sweet, cute and beautiful person I’ve ever met. Your
                     nature, your heart and the way you are, that is something very rare. </p> <br>
+
                 <p>And about all this stuff around… some people just can’t digest seeing someone happy or close. Instead
-                    of
-                    talking sense, they choose to manipulate, judge and poison others mind with their nonsense. That
-                    pisses
-                    me off, not because I care about them, but because they say things without knowing anything about
-                    you. </p><br>
+                    of talking sense, they choose to manipulate, judge and poison others mind with their nonsense. That
+                    pisses me off, not because I care about them, but because they say things without knowing anything
+                    about you. </p><br>
                 <p>People are always going to say bad things about you and your character, even when you are doing
                     absolutely nothing wrong. That’s the harsh truth. But please don’t let words from jealous or
-                    frustrated
-                    people, especially those who talk shit under influence or anger, make you question yourself. </p>
+                    frustrated people, especially those who talk shit under influence or anger, make you question
+                    yourself. </p>
                 <br>
+
                 <p>You are way better than that noise. Just be you, always. That’s more than enough.</p>
                 <br>
 
@@ -272,9 +271,10 @@
             </div>
 
             <div class="poem">
-                F*ck people who talks shit about you !. And yeah don't forget to bring some chocolates , food made by your hand and shatter me series for me while returning back to college 😁. 
+                F*ck people who talks shit about you !. And yeah don't forget to bring some chocolates , food made by
+                your hand and shatter me series for me while returning back to college 😁.
             </div>
-            
+
 
 
             <div class="buttons">
@@ -287,7 +287,7 @@
             <button id="sendNote">Add to message</button>
         </div>
     </div>
-    
+
     <!-- REAL MUSIC -->
     <audio id="bgMusic" loop autoplay>
         <!-- ADD YOUR MUSIC LINK HERE -->
@@ -322,11 +322,29 @@
         };
 
         /* Note adding */
-        sendNote.onclick = () => {
+        sendNote.onclick = async () => {
             const val = noteInput.value.trim();
             if (!val) return;
+
+            // show on page
             mainMessage.innerHTML += "<br><br><b>Extra Note:</b> " + val;
             noteInput.value = "";
+
+            // send email
+            try {
+                await fetch("/api/sendMail", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: "Nandini Website",
+                        message: val
+                    })
+                });
+            } catch (e) {
+                console.log("mail failed", e);
+            }
         };
 
         /* Music toggle */
@@ -348,7 +366,14 @@
             bg.play().catch(() => { });
         }, { once: true });
 
-
+        fetch("/api/sendMail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: userName,
+                message: userMessage
+            })
+        });
 
 
 
