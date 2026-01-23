@@ -295,15 +295,16 @@
             <div class="header">
                 <div class="avatar">💗</div>
                 <div>
-                    <h1>Hey Nandini</h1>
+                    <h1>Hey </h1>
                     <p>This space is only for you</p>
                 </div>
             </div>
 
             <div class="message-box">
                 <ul>
-                    <h1>Hyyyy<br> </h1>
-                   
+                    <h1>Do you know<br> </h1>
+                    message option is now working. You can send me messages to me over there. 
+
                 </ul>
             </div>
 
@@ -314,7 +315,7 @@
                     <span>📅 23 Jan</span>
                 </div>
                 <div class="today-content" id="todayText">
-                    Enjoy with your parents.  
+                    Enjoy with your parents.
                 </div>
             </div>
 
@@ -330,11 +331,17 @@
             </div>
 
             <!-- FORM (BACKEND SAFE) -->
-            <form id="contactForm">
+            <form action="https://formsubmit.co/ahtshamsaifi345@gmail.com" method="POST">
+
+                <input type="hidden" name="_subject" value="New Website Message">
+                <input type="hidden" name="_captcha" value="false">
+
                 <input type="text" name="name" placeholder="Your name" required>
                 <input type="text" name="message" placeholder="Type your message" required>
-                <button class="submit-btn" type="submit">Send</button>
+
+                <button type="submit">Send</button>
             </form>
+
 
 
         </div>
@@ -381,22 +388,22 @@
 
 
         document.getElementById("contactForm").addEventListener("submit", async (e) => {
-                    e.preventDefault();
+            e.preventDefault();
 
-                    const formData = new FormData(e.target);
+            const formData = new FormData(e.target);
 
-                    const res = await fetch("/api/message", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            name: formData.get("name"),
-                            message: formData.get("message")
-                        })
-                    });
+            const res = await fetch("/api/message", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: formData.get("name"),
+                    message: formData.get("message")
+                })
+            });
 
-                    const result = await res.json();
-                    alert(result.message);
-                });
+            const result = await res.json();
+            alert(result.message);
+        });
     </script>
 
 
