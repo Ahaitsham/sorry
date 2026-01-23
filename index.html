@@ -302,10 +302,8 @@
 
             <div class="message-box">
                 <ul>
-                    <h1>Hyyyyyyyyyyyy <br>  </h1>
-                        Nothing serious here.
-                        Just a website doing its job: reminding you that someone out there misses you and thought this
-                        was a good idea at 2 AM.
+                    <h1>Hyyyy<br> </h1>
+                   
                 </ul>
             </div>
 
@@ -316,8 +314,7 @@
                     <span>📅 23 Jan</span>
                 </div>
                 <div class="today-content" id="todayText">
-                    You did help me babu ! Don't ever think like that again.You know, the moment you sat beside me, my
-                    migraine pain felt like it never existed. It was as if you quietly took all my pain away.
+                    Enjoy with your parents.  
                 </div>
             </div>
 
@@ -333,11 +330,12 @@
             </div>
 
             <!-- FORM (BACKEND SAFE) -->
-            <form action="/message" method="post">
-                <input type="text" name="message" placeholder="Type your message">
-                <input type="text" name="name" placeholder="Your name">
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="text" name="message" placeholder="Type your message" required>
                 <button class="submit-btn" type="submit">Send</button>
-            </form> 
+            </form>
+
 
         </div>
     </div>
@@ -378,7 +376,27 @@
 
             player.src = src;
             player.play();
+
         }
+
+
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const formData = new FormData(e.target);
+
+                    const res = await fetch("/api/message", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: formData.get("name"),
+                            message: formData.get("message")
+                        })
+                    });
+
+                    const result = await res.json();
+                    alert(result.message);
+                });
     </script>
 
 
