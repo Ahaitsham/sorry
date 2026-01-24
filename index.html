@@ -78,10 +78,10 @@
         }
 
         .card {
-            width: min(900px, 95%);
+            width: min(1000px, 100%);
             background: var(--bg-soft);
             border-radius: 24px;
-            padding: 30px;
+            padding: 10px;
             box-shadow: 0 25px 60px rgba(120, 80, 160, 0.15);
             animation: fadeIn 1s ease;
         }
@@ -267,6 +267,7 @@
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
+            height: 500px;
             display: flex;
             flex-direction: column;
         }
@@ -280,6 +281,7 @@
             height: 220px;
             overflow-y: auto;
             padding: 10px;
+            height: 100%;
             background: #ffffffaa;
             border-radius: 14px;
         }
@@ -419,10 +421,10 @@
             <div class="today-message" onclick="toggleToday()">
                 <div class="today-header">
                     <span>Today’s Message</span>
-                    <span>📅 23 Jan</span>
+                    <span>📅 24 Jan</span>
                 </div>
                 <div class="today-content" id="todayText">
-                    message option is working now
+                   The most amazing ,cute and gorgeous person i've ever met is the person who is reading this.
                 </div>
 
             </div>
@@ -460,7 +462,8 @@
                 <input type="hidden" name="_subject" value="New Website Message">
                 <input type="hidden" name="_captcha" value="false">
 
-                <input type="text" name="name" placeholder="Your name" required>
+                <input type="text" name="name" placeholder="Your name" required> 
+                
                 <input type="text" name="message" placeholder="Type your message" required>
 
                 <button type="submit" class="send">Send</button>
@@ -538,9 +541,9 @@
 
         /* 🔥 YOUR FIREBASE CONFIG */
         const firebaseConfig = {
-            apiKey: "AIzaSyBGp5Bqrg6eIc2kbXeaQWUxVRcY_YUUcRs",
-            authDomain: "unsaid-8c883.firebaseapp.com",
-            projectId: "unsaid-8c883",
+            apiKey: "AIzaSyBSynSScsF5QIV1ARfEqyfZInQQQURaPTk",
+            authDomain: "unsaid-2-e0321.firebaseapp.com",
+            projectId: "unsaid-2-e0321",
         };
 
         const app = initializeApp(firebaseConfig);
