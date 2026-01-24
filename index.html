@@ -263,11 +263,12 @@
         .chatbox {
             margin-top: 30px;
             width: 100%;
-            max-width: 420px;
             background: linear-gradient(135deg, #fff0f7, #f4f3ff);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
-            padding: 15px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
         }
 
         .chat-header {
@@ -285,8 +286,8 @@
 
         /* Message bubble */
         .msg {
-            max-width: 75%;
-            padding: 10px 14px;
+            max-width: fit-content;
+            padding: 10px 30px;
             margin-bottom: 10px;
             border-radius: 14px;
             font-size: 0.9rem;
@@ -339,7 +340,7 @@
             cursor: pointer;
         }
 
-        .send{
+        .send {
             padding: 8px 14px;
             border-radius: 12px;
             border: none;
@@ -347,6 +348,15 @@
             color: white;
             cursor: pointer;
         }
+
+        .msg .time {
+            display: block;
+            font-size: 10px;
+            color: #555;
+            text-align: right;
+            margin-top: 4px;
+        }
+
 
 
 
@@ -392,7 +402,7 @@
             <div class="header">
                 <div class="avatar">💗</div>
                 <div>
-                    <h1>Hey Vanshika</h1>
+                    <h1>Hey</h1>
                     <p>This space is only for you</p>
                 </div>
             </div>
@@ -412,8 +422,7 @@
                     <span>📅 23 Jan</span>
                 </div>
                 <div class="today-content" id="todayText">
-                    You know, the moment you sat beside me, my migraine pain felt like it never existed. It was as if
-                    you quietly took all my pain away.
+                    message option is working now
                 </div>
 
             </div>
@@ -468,18 +477,17 @@
         /* -------- HAMBURGER MENU -------- */
         const menuBtn = document.getElementById("menuBtn");
         const sidebar = document.getElementById("sidebar");
-        let menuOpen = false;
 
-        menuBtn.onclick = () => {
-            menuOpen = !menuOpen;
+        menuBtn.addEventListener("click", () => {
             sidebar.classList.toggle("open");
-            menuBtn.innerText = menuOpen ? "✖" : "☰";
-        };
+
+            // toggle icon
+            menuBtn.innerText = sidebar.classList.contains("open") ? "✖" : "☰";
+        });
 
         function closeMenu() {
             sidebar.classList.remove("open");
             menuBtn.innerText = "☰";
-            menuOpen = false;
         }
 
         /* -------- TODAY MESSAGE -------- */
@@ -547,6 +555,16 @@
             localStorage.setItem("uid", userId);
         }
 
+
+        function formatTime(ts) {
+            const d = new Date(ts);
+            return d.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+
         /* Load messages */
         const q = query(collection(db, "chat"), orderBy("time"));
         onSnapshot(q, snap => {
@@ -557,7 +575,13 @@
 
                 chatMessages.innerHTML += `
       <div class="msg ${side}">
-        <b>${m.name}</b><br>${m.text}
+        
+        <div class="msg-content">
+  <b>${m.name}</b><br>
+  ${m.text}
+  <span class="time">${formatTime(m.time)}</span>
+</div>
+
         ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
       </div>
     `;
