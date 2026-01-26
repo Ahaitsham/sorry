@@ -106,7 +106,7 @@
         }
 
         .avatar {
-            min-width:90px;
+            min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ffb3d9, #c8b6ff);
@@ -267,7 +267,7 @@
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
-            height: 500px;
+            height: 800px;
             display: flex;
             flex-direction: column;
         }
@@ -364,6 +364,61 @@
         }
 
 
+        /* -------- CHAT INPUT REFINED -------- */
+        .chat-input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Name block */
+        .name-block input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            font-size: 0.95rem;
+        }
+
+        /* Message + send button block */
+        .message-block {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        /* Expanding textarea */
+        .message-block textarea {
+            flex: 1;
+            resize: none;
+            min-height: 42px;
+            max-height: 140px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            overflow-y: auto;
+        }
+
+        /* Send button */
+        .message-block button {
+            padding: 10px 16px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, #ff8fc7, #7b6cff);
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Auto-expand textarea */
+        .message-block textarea {
+            height: auto;
+        }
+
+
 
 
         /* ---------------- MOBILE ---------------- */
@@ -376,9 +431,7 @@
                 display: block;
             }
 
-            .avatar{
-                
-            }
+            .avatar {}
         }
     </style>
 </head>
@@ -432,7 +485,7 @@
                     <span>📅 26 Jan</span>
                 </div>
                 <div class="today-content" id="todayText">
-                     <b> Hey I've got a name for You "Parvini"</b>  <br>
+                    <b> Hey I've got a name for You "Parvini"</b> <br>
                     Parvini wasn’t chosen by chance.
                     I took Par from Parul, Vi from Vanshika, and Ni from Nandini. <br>
 
@@ -448,7 +501,6 @@
                     <button onclick="playSong('songs/2.mp3', this)">I've got my eyes on you</button>
                     <button onclick="playSong('songs/3.mp3', this)">snowman</button>
                     <button onclick="playSong('songs/4.mp3', this)">Ordinary</button>
-                    <button onclick="playSong('songs/4.mp3', this)">Ordinary</button>
 
                 </div>
             </div>
@@ -460,171 +512,196 @@
                 <div class="chat-messages" id="chatMessages"></div>
 
                 <div class="chat-input">
-                    <input type="text" id="chatName" placeholder="Your name">
-                    <input type="text" id="chatText" placeholder="Type your message">
-                    <button onclick="sendMessage()">➤</button>
+                    <div class="name-block">
+                        <input type="text" id="chatName" placeholder="Your name">
+                    </div>
+
+                    <div class="message-block">
+                        <textarea id="chatText" placeholder="Type your message"></textarea>
+                        <button onclick="sendMessage()">➤</button>
+                    </div>
                 </div>
+
+
+
+                <!-- FORM (BACKEND SAFE) -->
+                <form action="https://formsubmit.co/ahtshamsaifi345@gmail.com" method="POST">
+
+                    <input type="hidden" name="_subject" value="New Website Message">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <input type="text" name="name" placeholder="Your name" required>
+
+                    <input type="text" name="message" placeholder="Type your message" required>
+
+                    <button type="submit" class="send">Send</button>
+                </form>
+
+
+
             </div>
-
-
-            <!-- FORM (BACKEND SAFE) -->
-            <form action="https://formsubmit.co/ahtshamsaifi345@gmail.com" method="POST">
-
-                <input type="hidden" name="_subject" value="New Website Message">
-                <input type="hidden" name="_captcha" value="false">
-
-                <input type="text" name="name" placeholder="Your name" required>
-
-                <input type="text" name="message" placeholder="Type your message" required>
-
-                <button type="submit" class="send">Send</button>
-            </form>
-
-
-
         </div>
-    </div>
 
-    <audio id="player"></audio>
+        <audio id="player"></audio>
 
-    <script>
-        /* -------- HAMBURGER MENU -------- */
-        const menuBtn = document.getElementById("menuBtn");
-        const sidebar = document.getElementById("sidebar");
+        <script>
+            /* -------- HAMBURGER MENU -------- */
+            const menuBtn = document.getElementById("menuBtn");
+            const sidebar = document.getElementById("sidebar");
 
-        menuBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
+            menuBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
 
-            // toggle icon
-            menuBtn.innerText = sidebar.classList.contains("open") ? "✖" : "☰";
-        });
-
-        function closeMenu() {
-            sidebar.classList.remove("open");
-            menuBtn.innerText = "☰";
-        }
-
-        /* -------- TODAY MESSAGE -------- */
-        function toggleToday() {
-            document.getElementById("todayText").classList.toggle("show");
-        }
-
-        /* -------- SONG PLAYER -------- */
-        const player = document.getElementById("player");
-        let currentBtn = null;
-
-        function playSong(src, btn) {
-            if (currentBtn) currentBtn.classList.remove("active");
-            btn.classList.add("active");
-            currentBtn = btn;
-
-            player.src = src;
-            player.play();
-
-        }
-
-
-        document.getElementById("contactForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(e.target);
-
-            const res = await fetch("/api/message", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: formData.get("name"),
-                    message: formData.get("message")
-                })
+                // toggle icon
+                menuBtn.innerText = sidebar.classList.contains("open") ? "✖" : "☰";
             });
 
-            const result = await res.json();
-            alert(result.message);
-        });
-    </script>
+            function closeMenu() {
+                sidebar.classList.remove("open");
+                menuBtn.innerText = "☰";
+            }
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import {
-            getFirestore, collection, addDoc,
-            onSnapshot, query, orderBy, deleteDoc, doc
-        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+            /* -------- TODAY MESSAGE -------- */
+            function toggleToday() {
+                document.getElementById("todayText").classList.toggle("show");
+            }
 
-        /* 🔥 YOUR FIREBASE CONFIG */
-        const firebaseConfig = {
-            apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
-            authDomain: "unsaid-3.firebaseapp.com",
-            projectId: "unsaid-3",
-        };
+            /* -------- SONG PLAYER -------- */
+            const player = document.getElementById("player");
+            let currentBtn = null;
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+            function playSong(src, btn) {
+                if (currentBtn) currentBtn.classList.remove("active");
+                btn.classList.add("active");
+                currentBtn = btn;
 
-        const chatMessages = document.getElementById("chatMessages");
+                player.src = src;
+                player.play();
 
-        /* Unique user id (local) */
-        let userId = localStorage.getItem("uid");
-        if (!userId) {
-            userId = Math.random().toString(36).slice(2);
-            localStorage.setItem("uid", userId);
-        }
+            }
 
 
-        function formatTime(ts) {
-            const d = new Date(ts);
-            return d.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit"
+            document.getElementById("contactForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+
+                const res = await fetch("/api/message", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: formData.get("name"),
+                        message: formData.get("message")
+                    })
+                });
+
+                const result = await res.json();
+                alert(result.message);
             });
-        }
+        </script>
+
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            import {
+                getFirestore, collection, addDoc,
+                onSnapshot, query, orderBy, deleteDoc, doc
+            } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+            /* 🔥 YOUR FIREBASE CONFIG */
+            const firebaseConfig = {
+                apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
+                authDomain: "unsaid-3.firebaseapp.com",
+                projectId: "unsaid-3",
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            const chatMessages = document.getElementById("chatMessages");
+
+            /* Unique user id (local) */
+            let userId = localStorage.getItem("uid");
+            if (!userId) {
+                userId = Math.random().toString(36).slice(2);
+                localStorage.setItem("uid", userId);
+            }
 
 
-        /* Load messages */
-        const q = query(collection(db, "chat"), orderBy("time"));
-        onSnapshot(q, snap => {
-            chatMessages.innerHTML = "";
-            snap.forEach(d => {
-                const m = d.data();
-                const side = m.uid === userId ? "right" : "left";
+            function formatTime(ts) {
+                const d = new Date(ts);
+                return d.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+            }
 
-                chatMessages.innerHTML += `
+            function linkify(text) {
+                const urlPattern = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+                return text.replace(urlPattern, (url) => {
+                    let link = url;
+                    if (!link.startsWith("http")) {
+                        link = "https://" + link;
+                    }
+                    return `<a href="${link}" target="_blank" style="color:#7b6cff;font-weight:500;text-decoration:underline;">${url}</a>`;
+                });
+            }
+
+
+            /* Load messages */
+            const q = query(collection(db, "chat"), orderBy("time"));
+            onSnapshot(q, snap => {
+                chatMessages.innerHTML = "";
+                snap.forEach(d => {
+                    const m = d.data();
+                    const side = m.uid === userId ? "right" : "left";
+
+                    chatMessages.innerHTML += `
       <div class="msg ${side}">
         
         <div class="msg-content">
   <b>${m.name}</b><br>
-  ${m.text}
+  ${linkify(m.text)}
+
   <span class="time">${formatTime(m.time)}</span>
 </div>
 
         ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
       </div>
     `;
-            });
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
-
-        /* Send message */
-        window.sendMessage = async () => {
-            const name = chatName.value || "Anonymous";
-            const text = chatText.value.trim();
-            if (!text) return;
-
-            await addDoc(collection(db, "chat"), {
-                name,
-                text,
-                uid: userId,
-                time: Date.now()
+                });
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             });
 
-            chatText.value = "";
-        };
+            /* Send message */
+            window.sendMessage = async () => {
+                const name = chatName.value || "Anonymous";
+                const text = chatText.value.trim();
+                if (!text) return;
 
-        /* Delete message */
-        window.delMsg = async (id) => {
-            await deleteDoc(doc(db, "chat", id));
-        };
-    </script>
+                await addDoc(collection(db, "chat"), {
+                    name,
+                    text,
+                    uid: userId,
+                    time: Date.now()
+                });
 
+                chatText.value = "";
+            };
+
+            /* Delete message */
+            window.delMsg = async (id) => {
+                await deleteDoc(doc(db, "chat", id));
+            };
+        </script>
+
+
+        <script>
+            const textarea = document.getElementById("chatText");
+            textarea.addEventListener("input", () => {
+                textarea.style.height = "auto";
+                textarea.style.height = textarea.scrollHeight + "px";
+            });
+        </script>
 
 
 </body>
