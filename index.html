@@ -305,12 +305,15 @@
 .valentine-box h1 {
     color: #ff4d6d;
     margin-bottom: 30px;
+    display: inline-block;
+    max-width: 260px;
+    line-height: 1.3;
 }
 
 .no-area {
     position: relative;
-    width: 140px;
-    height: 80px;
+    width: 160px;
+    height: 90px;
 }
 
 
@@ -379,6 +382,16 @@
                 display: block;
             }
         }
+
+        @media (max-width: 480px) {
+    .valentine-box {
+        padding: 28px 22px;
+    }
+
+    .valentine-buttons {
+        gap: 18px;
+    }
+}
     </style>
 </head>
 
@@ -525,20 +538,27 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     function moveNo() {
-        const box = document.querySelector(".valentine-box");
+    const area = document.querySelector(".no-area");
 
-        const maxX = box.clientWidth - noBtn.clientWidth;
-        const maxY = box.clientHeight - noBtn.clientHeight;
+    const padding = 10; // safe margin
+    const maxX = area.clientWidth - noBtn.offsetWidth - padding;
+    const maxY = area.clientHeight - noBtn.offsetHeight - padding;
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+    const x = Math.max(
+        padding,
+        Math.random() * maxX
+    );
+    const y = Math.max(
+        padding,
+        Math.random() * maxY
+    );
 
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 
-        noMsg.innerText =
-            messages[Math.floor(Math.random() * messages.length)];
-    }
+    noMsg.innerText =
+        messages[Math.floor(Math.random() * messages.length)];
+}
 
     // MOBILE + DESKTOP
     noBtn.addEventListener("click", moveNo);
