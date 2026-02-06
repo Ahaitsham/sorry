@@ -4,22 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid</title>
+    <title>Unsaid 💖 Valentine</title>
 
     <style>
-        /* ---------------- ROOT THEME ---------------- */
+        /* ---------------- VALENTINE THEME ---------------- */
         :root {
-            --bg-main: #fff7fb;
+            --bg-main: #fff0f5;
             --bg-soft: #ffffff;
-            --primary: #c84b7a;
-            --secondary: #7b6cff;
-            --text-main: #2d1b2b;
-            --text-soft: #6d4c61;
-            --border-soft: rgba(200, 120, 160, 0.25);
-            --glass: rgba(255, 255, 255, 0.75);
+            --primary: #ff4d6d;
+            --secondary: #ff85a2;
+            --text-main: #3a1b2b;
+            --text-soft: #7a4c61;
+            --border-soft: rgba(255, 77, 109, 0.3);
+            --glass: rgba(255, 240, 245, 0.75);
         }
 
-        /* ---------------- BASE ---------------- */
         * {
             margin: 0;
             padding: 0;
@@ -27,10 +26,11 @@
         }
 
         body {
-            background: linear-gradient(135deg, #fff7fb, #f2f0ff);
+            background: linear-gradient(135deg, #fff0f7, #ffe3ec);
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* ---------------- NAVBAR ---------------- */
@@ -80,22 +80,11 @@
         .card {
             width: min(1000px, 100%);
             background: var(--bg-soft);
-            border-radius: 24px;
-            padding: 10px;
-            box-shadow: 0 25px 60px rgba(120, 80, 160, 0.15);
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow:
+                0 0 30px rgba(255, 77, 109, .25),
+                0 30px 80px rgba(255, 77, 109, .2);
         }
 
         /* ---------------- HEADER ---------------- */
@@ -109,19 +98,26 @@
             min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ffb3d9, #c8b6ff);
+            background: linear-gradient(135deg, #ff9bb3, #ffc2d1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
+            animation: pulse 2s infinite;
         }
 
-        .header h1 {
-            font-size: 1.6rem;
-        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
 
-        .header p {
-            color: var(--text-soft);
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         /* ---------------- MESSAGE ---------------- */
@@ -129,9 +125,17 @@
             margin-top: 30px;
             padding: 22px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #fff0f7, #f4f3ff);
+            background: linear-gradient(135deg, #ffe0ea, #fff0f7);
             border: 1px solid var(--border-soft);
             line-height: 1.6;
+            position: relative;
+        }
+
+        .message-box::after {
+            content: "💖 💕 💘 💗";
+            position: absolute;
+            top: -14px;
+            right: 18px;
         }
 
         /* ---------------- TODAY MESSAGE ---------------- */
@@ -139,19 +143,9 @@
             margin-top: 25px;
             padding: 18px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #ffe4f1, #ede9ff);
+            background: linear-gradient(135deg, #ffd6e0, #fff0f7);
             cursor: pointer;
-            transition: 0.4s ease;
-        }
-
-        .today-message:hover {
-            transform: translateY(-3px);
-        }
-
-        .today-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, .25);
         }
 
         .today-content {
@@ -159,31 +153,24 @@
             opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transition: 0.4s ease;
+            transition: .4s ease;
         }
 
         .today-content.show {
             opacity: 1;
-            max-height: fit-content;
+            max-height: 400px;
         }
 
-        /* ---------------- SONG SIDEBAR ---------------- */
+        /* ---------------- SONG PANEL ---------------- */
         .song-panel {
             margin-top: 30px;
             padding: 20px;
             border-radius: 18px;
-            background: #faf7ff;
-            border: 1px dashed var(--border-soft);
-        }
-
-        .song-panel h3 {
-            margin-bottom: 12px;
+            background: #fff0f7;
         }
 
         .song-list {
-
             height: 200px;
-
             overflow-y: scroll;
         }
 
@@ -194,80 +181,24 @@
             border-radius: 12px;
             border: none;
             margin-bottom: 10px;
-            background: white;
+            background: linear-gradient(135deg, #fff, #ffe0ea);
             cursor: pointer;
             font-weight: 500;
         }
 
-        /* ---------------- FORM ---------------- */
-        form {
-            margin-top: 25px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid var(--border-soft);
-            margin-bottom: 10px;
-        }
-
-        button.submit-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #ff8fc7, #7b6cff);
-            color: white;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-
-
-        }
-
-        /* ---------- SIDEBAR ---------- */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -260px;
-            width: 260px;
-            height: 100vh;
-            background: linear-gradient(135deg, #fff0f7, #ede9ff);
-            box-shadow: -20px 0 40px rgba(0, 0, 0, 0.1);
-            padding: 80px 25px;
-            transition: 0.4s ease;
-            z-index: 200;
-        }
-
-        .sidebar a {
-            display: block;
-            margin-bottom: 20px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .sidebar.open {
-            right: 0;
-        }
-
-        /* ---------- SONG ACTIVE ---------- */
         .song-list button.active {
-            background: linear-gradient(135deg, #ffb3d9, #c8b6ff);
-            color: #2d1b2b;
-            font-weight: 600;
+            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+            color: white;
         }
 
-        /* -------- CHAT BOX -------- */
+        /* ---------------- CHAT ---------------- */
         .chatbox {
             margin-top: 30px;
-            width: 100%;
-            background: linear-gradient(135deg, #fff0f7, #f4f3ff);
+            height: 600px;
+            background: linear-gradient(135deg, #ffe0ea, #fff0f7);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
-            height: 800px;
             display: flex;
             flex-direction: column;
         }
@@ -278,81 +209,38 @@
         }
 
         .chat-messages {
-            height: 220px;
+            flex: 1;
             overflow-y: auto;
             padding: 10px;
-            height: 100%;
             background: #ffffffaa;
             border-radius: 14px;
         }
 
-        /* Message bubble */
         .msg {
             max-width: fit-content;
-            padding: 10px 30px;
+            padding: 10px 18px;
             margin-bottom: 10px;
             border-radius: 14px;
-            font-size: 0.9rem;
+            font-size: .9rem;
             position: relative;
         }
 
-        /* Receiver (left) */
         .msg.left {
             background: #ffffff;
-            border-top-left-radius: 4px;
         }
 
-        /* Sender (right) */
         .msg.right {
-            background: linear-gradient(135deg, #ffb3d9, #c8b6ff);
+            background: linear-gradient(135deg, #ff9bb3, #ffc2d1);
             margin-left: auto;
-            border-top-right-radius: 4px;
         }
 
-        /* Delete button */
         .msg .delete {
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
             position: absolute;
             bottom: -14px;
             right: 6px;
-            opacity: 0.6;
-        }
-
-        .curvy {
-            font-family: cursive;
-        }
-
-        /* Input area */
-        .chat-input {
-            display: flex;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 8px 10px;
-            border-radius: 12px;
-            border: 1px solid var(--border-soft);
-        }
-
-        .chat-input button {
-            padding: 8px 14px;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #ff8fc7, #7b6cff);
-            color: white;
-            cursor: pointer;
-        }
-
-        .send {
-            padding: 8px 14px;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #ff8fc7, #7b6cff);
-            color: white;
-            cursor: pointer;
+            opacity: .6;
         }
 
         .msg .time {
@@ -363,63 +251,123 @@
             margin-top: 4px;
         }
 
-
-        /* -------- CHAT INPUT REFINED -------- */
+        /* ---------------- INPUT ---------------- */
         .chat-input {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: 10px;
         }
 
-        /* Name block */
-        .name-block input {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--border-soft);
-            font-size: 0.95rem;
-        }
-
-        /* Message + send button block */
         .message-block {
             display: flex;
-            align-items: flex-end;
             gap: 8px;
         }
 
-        /* Expanding textarea */
         .message-block textarea {
             flex: 1;
             resize: none;
-            min-height: 42px;
-            max-height: 140px;
             padding: 10px 14px;
             border-radius: 14px;
             border: 1px solid var(--border-soft);
-            font-family: inherit;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            overflow-y: auto;
         }
 
-        /* Send button */
         .message-block button {
             padding: 10px 16px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(135deg, #ff8fc7, #7b6cff);
+            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
             color: white;
             cursor: pointer;
-            font-size: 1rem;
         }
 
-        /* Auto-expand textarea */
-        .message-block textarea {
-            height: auto;
+        /* ---------------- VALENTINE POPUP ---------------- */
+#valentineOverlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff9bb3, #ffe0ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 1s ease;
+}
+
+.valentine-box {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,.2);
+    animation: popIn .8s ease;
+}
+
+.valentine-box h1 {
+    color: #ff4d6d;
+    margin-bottom: 30px;
+}
+
+.no-area {
+    position: relative;
+    width: 140px;
+    height: 80px;
+}
+
+
+.valentine-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.valentine-buttons button {
+    padding: 14px 28px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+    color: white;
+}
+
+#noBtn {
+    position: absolute;
+    background: #f3f3f3;
+}
+#noMsg {
+    margin-top: 20px;
+    color: #ff4d6d;
+    font-weight: 600;
+}
+
+/* animations */
+@keyframes popIn {
+    from { transform: scale(.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+        /* ---------------- FLOATING HEARTS ---------------- */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            opacity: .7;
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
         }
 
-
-
+        @keyframes floatUp {
+            to {
+                transform: translateY(-110vh);
+            }
+        }
 
         /* ---------------- MOBILE ---------------- */
         @media (max-width: 768px) {
@@ -430,8 +378,6 @@
             .menu-btn {
                 display: block;
             }
-
-            .avatar {}
         }
     </style>
 </head>
@@ -439,282 +385,265 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Unsaid</div>
-
+        <div class="nav-logo">Unsaid 💘</div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Message</a>
-            <a href="#">Music</a>
+            <a>Home</a>
+            <a>Message</a>
+            <a>Music</a>
         </div>
-
-        <div class="menu-btn" id="menuBtn">☰</div>
+        <div class="menu-btn">☰</div>
     </nav>
-
-
-    <!-- SIDEBAR -->
-    <div class="sidebar" id="sidebar">
-        <a href="#" onclick="closeMenu()">Home</a>
-        <a href="#" onclick="closeMenu()">Message</a>
-        <a href="#" onclick="closeMenu()">Music</a>
-    </div>
-
 
     <div class="main-container">
         <div class="card">
 
             <div class="header">
-                <div class="avatar">💗</div>
+                <div class="avatar">❤️</div>
                 <div>
                     <h1>Heyy Parvani</h1>
-                    <p>This space is only and only and only for you and it will always gonna be for you</p>
+                    <p>This space is only and forever yours 💞</p>
                 </div>
             </div>
 
             <div class="message-box">
-                <ul>
-                    <h1></h1>
-                 
-        she is pretty , she is amazing , she is diamond , she is rare, she is you... ❤️
-                </ul>
+                She is pretty, she is rare, she is my Valentine… she is YOU ❤️
             </div>
 
-            <!-- TODAY MESSAGE -->
             <div class="today-message" onclick="toggleToday()">
-                <div class="today-header">
-                    <span>Today’s Message</span>
-                    <span> 6 Feb</span>
-                </div>
+                <b>Today’s Message 💝</b>
                 <div class="today-content" id="todayText">
-                    
-                   <p>this is for you ❤️</p>
-                  <b> goodmorning babyyyy</b>  <br><br>
-                you know what , yesterday I slept early without seeing u , talking to u and without listening to ur cute baby voice🥹. But you were actually with me the whole time <b>in my dreams</b>
+                    <p>this is for you ❤️</p>
+                    <b> goodmorning babyyyy</b> <br><br>
+                    you know what , yesterday I slept early without seeing u , talking to u and without listening to ur
+                    cute baby voice🥹. But you were actually with me the whole time <b>in my dreams</b>
                     <br>
                     I don’t know how to explain this properly, but <br>
                     You have this magical way of making my bad days better and my good days perfect.
-Even in silence, I feel connected to you.
-I may not always be perfect, but my love for you is always real and deep.
-<br>
-                    I love uuuuuuu sooo soooo soo muchh my baby , my darling , my future , my princess and my everything.  <br>
-               
-                    
-
+                    Even in silence, I feel connected to you.
+                    I may not always be perfect, but my love for you is always real and deep.
+                    <br>
+                    I love uuuuuuu sooo soooo soo muchh my baby , my darling , my future , my princess and my
+                    everything. <br>
 
                 </div>
-
             </div>
 
-            <!-- SONG PANEL -->
             <div class="song-panel">
                 <h3>Pick a song 💿</h3>
                 <div class="song-list">
-                    <button onclick="playSong('./songs/1.mp3', this)">hey cute girl</button>
-                    <button onclick="playSong('songs/2.mp3', this)">I've got my eyes on you</button>
-                   
-                    <button onclick="playSong('songs/4.mp3', this)">Ordinary</button>
-                    <button onclick="playSong('songs/5.mp3', this)">Blue</button>
-                     <button onclick="playSong('songs/3.mp3', this)">I love u cute lil baby 😘</button>
+                    <button onclick="playSong('songs/1.mp3',this)"><b>I’ve got my eyes on you</b> … and my heart already
+                        knows where it belongs.</button>
+                    <button onclick="playSong('songs/2.mp3',this)">You’re my <b>perfect</b> … even on my imperfect
+                        days</button>
+                    <button onclick="playSong('songs/3.mp3',this)"><b>I found love</b> … and it somehow feels like I
+                        found myself too.</button>
+                    <button onclick="playSong('songs/4.mp3',this)">You’re the reason my heart goes <b>tum hi ho</b>
+                        every single time.</button>
+                    <button onclick="playSong('songs/5.mp3',this)">If <b>loving you</b> is a song, I’d put it on repeat
+                        forever.</button>
+                    <button onclick="playSong('songs/6.mp3',this)">With you, even my darkest days feel <b>blue</b> in
+                        the most beautiful way.</button>
+                    <button onclick="playSong('songs/7.mp3',this)">With you, even <b>ordinary</b> moments feel like
+                        something magical.</button>
+                    <button onclick="playSong('songs/8.mp3',this)">I don’t promise perfection, but I promise a love that
+                        stays <b>like a father’s</b> love never leaves.</button>
+                    <button onclick="playSong('songs/9.mp3',this)">If this is a <b>love story</b> , I hope it never
+                        finds an ending.</button>
                 </div>
             </div>
 
-            <!-- CHAT BOX -->
             <div class="chatbox">
                 <div class="chat-header">Chat 💬</div>
-
                 <div class="chat-messages" id="chatMessages"></div>
 
                 <div class="chat-input">
-                    <div class="name-block">
-                        <input type="text" id="chatName" placeholder="Your name">
-                    </div>
 
+                    <!-- NAME INPUT -->
+                    <input type="text" id="chatName" placeholder="Your name 💕" style="
+            padding:10px 14px;
+            border-radius:14px;
+            border:1px solid var(--border-soft);
+            font-size:0.95rem;
+        ">
+
+                    <!-- MESSAGE INPUT -->
                     <div class="message-block">
                         <textarea id="chatText" placeholder="Type your message"></textarea>
                         <button onclick="sendMessage()">➤</button>
                     </div>
+
                 </div>
-
-
-
-                <!-- FORM (BACKEND SAFE) -->
-                <form action="https://formsubmit.co/ahtshamsaifi345@gmail.com" method="POST">
-
-                    <input type="hidden" name="_subject" value="New Website Message">
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <input type="text" name="name" placeholder="Your name" required>
-
-                    <input type="text" name="message" placeholder="Type your message" required>
-
-                    <button type="submit" class="send">Send</button>
-                </form>
-
-
-
             </div>
+
         </div>
+    </div>
 
-        <audio id="player"></audio>
+    <audio id="player"></audio>
 
-        <script>
-            /* -------- HAMBURGER MENU -------- */
-            const menuBtn = document.getElementById("menuBtn");
-            const sidebar = document.getElementById("sidebar");
+    <!-- FLOATING HEARTS -->
+    <script>
+        function createHeart() {
+            const h = document.createElement("div");
+            h.className = "heart";
+            h.innerText = ["❤️", "💖", "💕", "💘", "💗"][Math.floor(Math.random() * 5)];
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.fontSize = 14 + Math.random() * 14 + "px";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 8000);
+        }
+        setInterval(createHeart, 500);
 
-            menuBtn.addEventListener("click", () => {
-                sidebar.classList.toggle("open");
+        function toggleToday() {
+            document.getElementById("todayText").classList.toggle("show");
+        }
 
-                // toggle icon
-                menuBtn.innerText = sidebar.classList.contains("open") ? "✖" : "☰";
+        const player = document.getElementById("player");
+        let currentBtn = null;
+        function playSong(src, btn) {
+            if (currentBtn) currentBtn.classList.remove("active");
+            btn.classList.add("active");
+            currentBtn = btn;
+            player.src = src;
+            player.play();
+        }
+    </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const overlay = document.getElementById("valentineOverlay");
+    const noMsg = document.getElementById("noMsg");
+
+    const messages = [
+        "Think again 😌",
+        "He is smart 😏",
+        "He loves you a lot ❤️",
+        "Nice try 😜",
+        "You know the answer 😉"
+    ];
+
+    function moveNo() {
+        const box = document.querySelector(".valentine-box");
+
+        const maxX = box.clientWidth - noBtn.clientWidth;
+        const maxY = box.clientHeight - noBtn.clientHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+
+        noMsg.innerText =
+            messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    // MOBILE + DESKTOP
+    noBtn.addEventListener("click", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    yesBtn.addEventListener("click", () => {
+        overlay.style.animation = "fadeOut 1s forwards";
+
+        // Heart explosion
+        for (let i = 0; i < 35; i++) {
+            setTimeout(createHeart, i * 40);
+        }
+
+        setTimeout(() => overlay.remove(), 1000);
+    });
+
+});
+</script>
+
+    <!-- 🔥 FIREBASE CHAT (UNCHANGED LOGIC) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import {
+            getFirestore, collection, addDoc,
+            onSnapshot, query, orderBy, deleteDoc, doc
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
+            authDomain: "unsaid-3.firebaseapp.com",
+            projectId: "unsaid-3",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const chatMessages = document.getElementById("chatMessages");
+
+        let userId = localStorage.getItem("uid");
+        if (!userId) {
+            userId = Math.random().toString(36).slice(2);
+            localStorage.setItem("uid", userId);
+        }
+
+        function formatTime(ts) {
+            const d = new Date(ts);
+            return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        }
+
+        const q = query(collection(db, "chat"), orderBy("time"));
+        onSnapshot(q, snap => {
+            chatMessages.innerHTML = "";
+            snap.forEach(d => {
+                const m = d.data();
+                const side = m.uid === userId ? "right" : "left";
+                chatMessages.innerHTML += `
+        <div class="msg ${side}">
+            <b>${m.name || "Anonymous"}</b><br>
+            ${m.text}
+            <span class="time">${formatTime(m.time)}</span>
+            ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
+        </div>`;
+            });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        window.sendMessage = async () => {
+            const name = chatName.value.trim() || "Anonymous 💕";
+            const text = chatText.value.trim();
+            if (!text) return;
+
+            // save name locally
+            localStorage.setItem("chatName", name);
+
+            await addDoc(collection(db, "chat"), {
+                name,
+                text,
+                uid: userId,
+                time: Date.now()
             });
 
-            function closeMenu() {
-                sidebar.classList.remove("open");
-                menuBtn.innerText = "☰";
-            }
+            chatText.value = "";
+        };
 
-            /* -------- TODAY MESSAGE -------- */
-            function toggleToday() {
-                document.getElementById("todayText").classList.toggle("show");
-            }
+        window.delMsg = async (id) => {
+            await deleteDoc(doc(db, "chat", id));
+        };
+    </script>
 
-            /* -------- SONG PLAYER -------- */
-            const player = document.getElementById("player");
-            let currentBtn = null;
+    <!-- VALENTINE POPUP -->
+<div id="valentineOverlay">
+    <div class="valentine-box">
+        <h1>Will you be my Valentine? 💘</h1>
+        <div class="valentine-buttons">
+    <button id="yesBtn">YES 💖</button>
 
-            function playSong(src, btn) {
-                if (currentBtn) currentBtn.classList.remove("active");
-                btn.classList.add("active");
-                currentBtn = btn;
-
-                player.src = src;
-                player.play();
-
-            }
-
-
-            document.getElementById("contactForm").addEventListener("submit", async (e) => {
-                e.preventDefault();
-
-                const formData = new FormData(e.target);
-
-                const res = await fetch("/api/message", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        name: formData.get("name"),
-                        message: formData.get("message")
-                    })
-                });
-
-                const result = await res.json();
-                alert(result.message);
-            });
-        </script>
-
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-            import {
-                getFirestore, collection, addDoc,
-                onSnapshot, query, orderBy, deleteDoc, doc
-            } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-            /* 🔥 YOUR FIREBASE CONFIG */
-            const firebaseConfig = {
-                apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
-                authDomain: "unsaid-3.firebaseapp.com",
-                projectId: "unsaid-3",
-            };
-
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
-
-            const chatMessages = document.getElementById("chatMessages");
-
-            /* Unique user id (local) */
-            let userId = localStorage.getItem("uid");
-            if (!userId) {
-                userId = Math.random().toString(36).slice(2);
-                localStorage.setItem("uid", userId);
-            }
-
-
-            function formatTime(ts) {
-                const d = new Date(ts);
-                return d.toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                });
-            }
-
-            function linkify(text) {
-                const urlPattern = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
-                return text.replace(urlPattern, (url) => {
-                    let link = url;
-                    if (!link.startsWith("http")) {
-                        link = "https://" + link;
-                    }
-                    return `<a href="${link}" target="_blank" style="color:#7b6cff;font-weight:500;text-decoration:underline;">${url}</a>`;
-                });
-            }
-
-
-            /* Load messages */
-            const q = query(collection(db, "chat"), orderBy("time"));
-            onSnapshot(q, snap => {
-                chatMessages.innerHTML = "";
-                snap.forEach(d => {
-                    const m = d.data();
-                    const side = m.uid === userId ? "right" : "left";
-
-                    chatMessages.innerHTML += `
-      <div class="msg ${side}">
-        
-        <div class="msg-content">
-  <b>${m.name}</b><br>
-  ${linkify(m.text)}
-
-  <span class="time">${formatTime(m.time)}</span>
+    <div class="no-area">
+        <button id="noBtn">NO 🙈</button>
+    </div>
 </div>
 
-        ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
-      </div>
-    `;
-                });
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            });
-
-            /* Send message */
-            window.sendMessage = async () => {
-                const name = chatName.value || "Anonymous";
-                const text = chatText.value.trim();
-                if (!text) return;
-
-                await addDoc(collection(db, "chat"), {
-                    name,
-                    text,
-                    uid: userId,
-                    time: Date.now()
-                });
-
-                chatText.value = "";
-            };
-
-            /* Delete message */
-            window.delMsg = async (id) => {
-                await deleteDoc(doc(db, "chat", id));
-            };
-        </script>
-
-
-        <script>
-            const textarea = document.getElementById("chatText");
-            textarea.addEventListener("input", () => {
-                textarea.style.height = "auto";
-                textarea.style.height = textarea.scrollHeight + "px";
-            });
-        </script>
-
+<p id="noMsg"></p>
+        <p id="noMsg"></p>
+    </div>
+</div>
 
 </body>
 
