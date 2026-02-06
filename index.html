@@ -282,80 +282,91 @@
         }
 
         /* ---------------- VALENTINE POPUP ---------------- */
-#valentineOverlay {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #ff9bb3, #ffe0ea);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    animation: fadeIn 1s ease;
-}
+        #valentineOverlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #ff9bb3, #ffe0ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 1s ease;
+        }
 
-.valentine-box {
-    background: white;
-    padding: 40px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 30px 80px rgba(0,0,0,.2);
-    animation: popIn .8s ease;
-}
+        .valentine-box {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .2);
+            animation: popIn .8s ease;
+        }
 
-.valentine-box h1 {
-    color: #ff4d6d;
-    margin-bottom: 30px;
-    display: inline-block;
-    max-width: 260px;
-    line-height: 1.3;
-}
+        .valentine-box h1 {
+            color: #ff4d6d;
+            margin-bottom: 30px;
+            display: inline-block;
+            max-width: 260px;
+            line-height: 1.3;
+        }
 
-.no-area {
-    position: relative;
-    width: 160px;
-    height: 90px;
-}
+        .no-area {
+            position: relative;
+            width: 160px;
+            height: 90px;
+        }
 
 
-.valentine-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
-}
+        .valentine-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
 
-.valentine-buttons button {
-    padding: 14px 28px;
-    border-radius: 30px;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
+        .valentine-buttons button {
+            padding: 14px 28px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
 
-#yesBtn {
-    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
-    color: white;
-}
+        #yesBtn {
+            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+            color: white;
+        }
 
-#noBtn {
-    position: absolute;
-    background: #f3f3f3;
-}
-#noMsg {
-    margin-top: 20px;
-    color: #ff4d6d;
-    font-weight: 600;
-}
+        #noBtn {
+            position: absolute;
+            background: #f3f3f3;
+        }
 
-/* animations */
-@keyframes popIn {
-    from { transform: scale(.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+        #noMsg {
+            margin-top: 20px;
+            color: #ff4d6d;
+            font-weight: 600;
+        }
 
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
+        /* animations */
+        @keyframes popIn {
+            from {
+                transform: scale(.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
 
         /* ---------------- FLOATING HEARTS ---------------- */
         .heart {
@@ -384,14 +395,14 @@
         }
 
         @media (max-width: 480px) {
-    .valentine-box {
-        padding: 28px 22px;
-    }
+            .valentine-box {
+                padding: 28px 22px;
+            }
 
-    .valentine-buttons {
-        gap: 18px;
-    }
-}
+            .valentine-buttons {
+                gap: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -413,30 +424,33 @@
             <div class="header">
                 <div class="avatar">❤️</div>
                 <div>
-                    <h1>Heyy Parvani</h1>
+                    <h1>Happy Rose day Darling Parvani🌹</h1>
                     <p>This space is only and forever yours 💞</p>
                 </div>
             </div>
 
             <div class="message-box">
-                She is pretty, she is rare, she is my Valentine… she is YOU ❤️
+                Just like a rose makes everything beautiful, you make my life brighter just by being in it.
+I’m really lucky to have you, and I hope you always remember how special you are to me ❤️
             </div>
 
             <div class="today-message" onclick="toggleToday()">
                 <b>Today’s Message 💝</b>
+                <span> 7 Feb</span>
                 <div class="today-content" id="todayText">
                     <p>this is for you ❤️</p>
                     <b> goodmorning babyyyy</b> <br><br>
-                    you know what , yesterday I slept early without seeing u , talking to u and without listening to ur
-                    cute baby voice🥹. But you were actually with me the whole time <b>in my dreams</b>
-                    <br>
-                    I don’t know how to explain this properly, but <br>
-                    You have this magical way of making my bad days better and my good days perfect.
-                    Even in silence, I feel connected to you.
-                    I may not always be perfect, but my love for you is always real and deep.
-                    <br>
-                    I love uuuuuuu sooo soooo soo muchh my baby , my darling , my future , my princess and my
-                    everything. <br>
+                    Today is Rose Day, but honestly… no rose in this world can match the beauty of your presence in my
+                    life. 🌹<br>
+                    If I could give you one thing today, it wouldn’t be just a rose. <br>
+                    <b>It would be a promise to</b> <br>
+                    -choose you everyday <br>
+                    -care for you when you’re tired <br>
+
+                    Happy Rose Day, my love. <br>
+                    This rose 🌹 is just a symbol… <br>
+                    my heart already belongs to you. ❤️
+
 
                 </div>
             </div>
@@ -495,6 +509,7 @@
 
     <!-- FLOATING HEARTS -->
     <script>
+
         function createHeart() {
             const h = document.createElement("div");
             h.className = "heart";
@@ -522,61 +537,67 @@
     </script>
 
     <script>
-document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
 
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const overlay = document.getElementById("valentineOverlay");
-    const noMsg = document.getElementById("noMsg");
+            const noBtn = document.getElementById("noBtn");
+            const yesBtn = document.getElementById("yesBtn");
+            const overlay = document.getElementById("valentineOverlay");
+            const noMsg = document.getElementById("noMsg");
 
-    const messages = [
-        "Think again 😌",
-        "He is smart 😏",
-        "He loves you a lot ❤️",
-        "Nice try 😜",
-        "You know the answer 😉"
-    ];
+            const messages = [
+                "Think again 😌",
+                "I am smart 😏",
+                "I love you a lot ❤️",
+                "Nice try 😜",
+                "You know the answer 😉",
+                "suno naaaaa",
+                "Vashikaaaaa sunooooooo",
+                "I love u babu",
+                "aise krogi ab apne baby k saath",
+                "aur kitna no pr click krogi",
+                "Don't you love me babyyy"
+            ];
 
-    function moveNo() {
-    const area = document.querySelector(".no-area");
+            function moveNo() {
+                const area = document.querySelector(".no-area");
 
-    const padding = 10; // safe margin
-    const maxX = area.clientWidth - noBtn.offsetWidth - padding;
-    const maxY = area.clientHeight - noBtn.offsetHeight - padding;
+                const padding = 10; // safe margin
+                const maxX = area.clientWidth - noBtn.offsetWidth - padding;
+                const maxY = area.clientHeight - noBtn.offsetHeight - padding;
 
-    const x = Math.max(
-        padding,
-        Math.random() * maxX
-    );
-    const y = Math.max(
-        padding,
-        Math.random() * maxY
-    );
+                const x = Math.max(
+                    padding,
+                    Math.random() * maxX
+                );
+                const y = Math.max(
+                    padding,
+                    Math.random() * maxY
+                );
 
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+                noBtn.style.left = `${x}px`;
+                noBtn.style.top = `${y}px`;
 
-    noMsg.innerText =
-        messages[Math.floor(Math.random() * messages.length)];
-}
+                noMsg.innerText =
+                    messages[Math.floor(Math.random() * messages.length)];
+            }
 
-    // MOBILE + DESKTOP
-    noBtn.addEventListener("click", moveNo);
-    noBtn.addEventListener("touchstart", moveNo);
+            // MOBILE + DESKTOP
+            noBtn.addEventListener("click", moveNo);
+            noBtn.addEventListener("touchstart", moveNo);
 
-    yesBtn.addEventListener("click", () => {
-        overlay.style.animation = "fadeOut 1s forwards";
+            yesBtn.addEventListener("click", () => {
+                overlay.style.animation = "fadeOut 1s forwards";
 
-        // Heart explosion
-        for (let i = 0; i < 35; i++) {
-            setTimeout(createHeart, i * 40);
-        }
+                // Heart explosion
+                for (let i = 0; i < 35; i++) {
+                    setTimeout(createHeart, i * 40);
+                }
 
-        setTimeout(() => overlay.remove(), 1000);
-    });
+                setTimeout(() => overlay.remove(), 1000);
+            });
 
-});
-</script>
+        });
+    </script>
 
     <!-- 🔥 FIREBASE CHAT (UNCHANGED LOGIC) -->
     <script type="module">
@@ -649,21 +670,21 @@ document.addEventListener("DOMContentLoaded", () => {
     </script>
 
     <!-- VALENTINE POPUP -->
-<div id="valentineOverlay">
-    <div class="valentine-box">
-        <h1>Will you be my Valentine? 💘</h1>
-        <div class="valentine-buttons">
-    <button id="yesBtn">YES 💖</button>
+    <div id="valentineOverlay">
+        <div class="valentine-box">
+            <h1>Will you be my Valentine? 💘</h1>
+            <div class="valentine-buttons">
+                <button id="yesBtn">YES 💖</button>
 
-    <div class="no-area">
-        <button id="noBtn">NO 🙈</button>
-    </div>
-</div>
+                <div class="no-area">
+                    <button id="noBtn">NO 🙈</button>
+                </div>
+            </div>
 
-<p id="noMsg"></p>
-        <p id="noMsg"></p>
+            <p id="noMsg"></p>
+            <p id="noMsg"></p>
+        </div>
     </div>
-</div>
 
 </body>
 
