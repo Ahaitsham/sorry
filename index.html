@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 💖 Valentine</title>
+    <title>Unsaid 🧸 Teddy Day</title>
 
     <style>
-        /* ---------------- VALENTINE THEME ---------------- */
+        /* ---------------- TEDDY DAY THEME ---------------- */
         :root {
-            --bg-main: #fff0f5;
-            --bg-soft: #ffffff;
-            --primary: #ff4d6d;
-            --secondary: #ff85a2;
-            --text-main: #3a1b2b;
-            --text-soft: #7a4c61;
-            --border-soft: rgba(255, 77, 109, 0.3);
-            --glass: rgba(255, 240, 245, 0.75);
+            --bg-main: #fff6e9;
+            --bg-soft: #fffaf4;
+            --primary: #c47a4a;
+            --secondary: #f2b880;
+            --text-main: #5a3a1e;
+            --text-soft: #8b5e3c;
+            --border-soft: rgba(196, 122, 74, 0.35);
+            --glass: rgba(255, 246, 233, 0.85);
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #fff0f7, #ffe3ec);
+            background: linear-gradient(135deg, #fff1df, #ffe6c7);
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
@@ -83,8 +83,8 @@
             border-radius: 30px;
             padding: 20px;
             box-shadow:
-                0 0 30px rgba(255, 77, 109, .25),
-                0 30px 80px rgba(255, 77, 109, .2);
+                0 0 30px rgba(196, 122, 74, .25),
+                0 30px 80px rgba(196, 122, 74, .2);
         }
 
         /* ---------------- HEADER ---------------- */
@@ -98,7 +98,7 @@
             min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff9bb3, #ffc2d1);
+            background: linear-gradient(135deg, #f2b880, #ffe3c4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -125,14 +125,14 @@
             margin-top: 30px;
             padding: 22px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #ffe0ea, #fff0f7);
+            background: linear-gradient(135deg, #fff1df, #fffaf4);
             border: 1px solid var(--border-soft);
             line-height: 1.6;
             position: relative;
         }
 
         .message-box::after {
-            content: "💖 💕 💘 💗";
+            content: "🧸 🤎 🧸 🤎";
             position: absolute;
             top: -14px;
             right: 18px;
@@ -143,9 +143,9 @@
             margin-top: 25px;
             padding: 18px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #ffd6e0, #fff0f7);
+            background: linear-gradient(135deg, #ffe3c4, #fffaf4);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, .25);
+            box-shadow: 0 10px 30px rgba(196, 122, 74, .25);
         }
 
         .today-content {
@@ -166,7 +166,7 @@
             margin-top: 30px;
             padding: 20px;
             border-radius: 18px;
-            background: #fff0f7;
+            background: #fff1df;
         }
 
         .song-list {
@@ -181,13 +181,15 @@
             border-radius: 12px;
             border: none;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff, #ffe0ea);
+            background: linear-gradient(135deg, #fff7ee, #ffe3c4);
             cursor: pointer;
             font-weight: 500;
+            transition: background .3s;
         }
 
+        /* 🔥 ACTIVE SONG — REQUIRED FOR JS */
         .song-list button.active {
-            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+            background: linear-gradient(135deg, #c47a4a, #f2b880);
             color: white;
         }
 
@@ -195,7 +197,7 @@
         .chatbox {
             margin-top: 30px;
             height: 600px;
-            background: linear-gradient(135deg, #ffe0ea, #fff0f7);
+            background: linear-gradient(135deg, #ffe3c4, #fffaf4);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
@@ -212,7 +214,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 10px;
-            background: #ffffffaa;
+            background: #ffffffcc;
             border-radius: 14px;
         }
 
@@ -230,7 +232,7 @@
         }
 
         .msg.right {
-            background: linear-gradient(135deg, #ff9bb3, #ffc2d1);
+            background: linear-gradient(135deg, #f2b880, #ffe3c4);
             margin-left: auto;
         }
 
@@ -276,99 +278,12 @@
             padding: 10px 16px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+            background: linear-gradient(135deg, #c47a4a, #f2b880);
             color: white;
             cursor: pointer;
         }
 
-        /* ---------------- VALENTINE POPUP ---------------- */
-        #valentineOverlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, #ff9bb3, #ffe0ea);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            animation: fadeIn 1s ease;
-        }
-
-        .valentine-box {
-            background: white;
-            padding: 40px;
-            border-radius: 30px;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, .2);
-            animation: popIn .8s ease;
-        }
-
-        .valentine-box h1 {
-            color: #ff4d6d;
-            margin-bottom: 30px;
-            display: inline-block;
-            max-width: 260px;
-            line-height: 1.3;
-        }
-
-        .no-area {
-            position: relative;
-            width: 160px;
-            height: 90px;
-        }
-
-
-        .valentine-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .valentine-buttons button {
-            padding: 14px 28px;
-            border-radius: 30px;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-        }
-
-        #yesBtn {
-            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
-            color: white;
-        }
-
-        #noBtn {
-            position: absolute;
-            background: #f3f3f3;
-        }
-
-        #noMsg {
-            margin-top: 20px;
-            color: #ff4d6d;
-            font-weight: 600;
-        }
-
-        /* animations */
-        @keyframes popIn {
-            from {
-                transform: scale(.5);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        /* ---------------- FLOATING HEARTS ---------------- */
+        /* ---------------- FLOATING TEDDIES ---------------- */
         .heart {
             position: fixed;
             bottom: -20px;
@@ -383,25 +298,41 @@
             }
         }
 
-        /* ---------------- MOBILE ---------------- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+        /* ================= CHAT NAME INPUT STYLING ================= */
 
-            .menu-btn {
-                display: block;
-            }
+        .chat-input #chatName {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            outline: none;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            background: #fff5f7;
+            /* soft romantic tone */
+            color: #333;
+
+            margin-bottom: 8px;
         }
 
-        @media (max-width: 480px) {
-            .valentine-box {
-                padding: 28px 22px;
-            }
+        /* Placeholder styling */
+        .chat-input #chatName::placeholder {
+            color: #7d3c4c;
+            opacity: 0.9;
+            font-weight: 500;
+        }
 
-            .valentine-buttons {
-                gap: 18px;
-            }
+        /* Focus effect (no animation, no JS) */
+        .chat-input #chatName:focus {
+            border-color: #ff4d6d;
+            background: #fff;
+        }
+
+        /* Mobile friendly tap area */
+        .chat-input #chatName {
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -409,7 +340,7 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Unsaid 💘</div>
+        <div class="nav-logo">Unsaid 🧸</div>
         <div class="nav-links">
             <a>Home</a>
             <a>Message</a>
@@ -422,85 +353,73 @@
         <div class="card">
 
             <div class="header">
-                <div class="avatar">❤️</div>
+                <div class="avatar">🧸</div>
                 <div>
-                    <h1> Darling 🌹</h1>
-                    <p>This space is only and forever yours 💞</p>
+                    <h1> Hey babyy 🤎</h1>
+                    If hugs had a shape,<br>
+                    they’d look exactly like you ❤️
                 </div>
             </div>
 
             <div class="message-box">
-
-                You are not my option <br>
-                you're my favourite decision. ❤️
-
+                <p>If I could, I’d turn myself into your teddy,
+                    so I could be the first thing you hug in the morning
+                    and the last thing you hold at night.</p>
             </div>
 
+            <!-- TODAY MESSAGE -->
             <div class="today-message" onclick="toggleToday()">
-                <b>Today’s Message 💝</b>
-                <span> 9 Feb</span>
+                <b>Today’s Teddy Message 🧸</b>
+                <span> 10 Feb</span>
                 <div class="today-content" id="todayText">
-                    <p>This is for you ❤️</p>
-                    <b>Good morning, babyyyy</b><br><br>
+                    Happy Teddy Day, my love 🧸<br><br>
 
-                    I’ll stop loving you<br>
-                    when Tom eats Jerry,<br>
-                    when the battery hits 101%,<br>
-                    when fake flowers die,<br>
-                    when time hits 25,<br>
-                    when it’s February 30.<br><br>
+                    Yesterday evening…<br>
+                    I ate the <b>best chocolate of my life</b> —<br>
+                    not from a wrapper,<br>
+                    but from <b>your lips when I kissed you</b> 🤍<br><br>
 
-                    Soooooo…<br>
-                    I love you, Vanshikaa.<br>
-                    I love you soooooooo much—<br>
-                    forever and ever and ever 😘
+                    That moment is still melting in my heart,<br>
+                    just like you melt me every single day.<br>
+                    If love had a flavor,<br>
+                    it would taste exactly like <b>you</b>.<br><br>
+
+                    So when you hug your teddy tonight,<br>
+                    remember it’s holding all my warmth,<br>
+                    all my kisses,<br>
+                    and a heart that belongs <b>only to you</b>.<br><br>
+
+                    I love you endlessly ❤️
                 </div>
             </div>
 
+            <!-- SONG PANEL (ALL ORIGINAL SONGS) -->
             <div class="song-panel">
-                <h3>Pick a song 💿</h3>
+                <h3>Pick a song 🧸🎶</h3>
                 <div class="song-list">
-                    <button onclick="playSong('songs/1.mp3',this)"><b>I’ve got my eyes on you</b> … and my heart already
-                        knows where it belongs.</button>
-                    <button onclick="playSong('songs/2.mp3',this)">You’re my <b>perfect</b> … even on my imperfect
-                        days</button>
-                    <button onclick="playSong('songs/3.mp3',this)"><b>I found love</b> … and it somehow feels like I
-                        found myself too.</button>
-                    <button onclick="playSong('songs/4.mp3',this)">You’re the reason my heart goes <b>tum hi ho</b>
-                        every single time.</button>
-                    <button onclick="playSong('songs/5.mp3',this)">If <b>loving you</b> is a song, I’d put it on repeat
-                        forever.</button>
-                    <button onclick="playSong('songs/6.mp3',this)">With you, even my darkest days feel <b>blue</b> in
-                        the most beautiful way.</button>
-                    <button onclick="playSong('songs/7.mp3',this)">With you, even <b>ordinary</b> moments feel like
-                        something magical.</button>
-                    <button onclick="playSong('songs/8.mp3',this)">I don’t promise perfection, but I promise a love that
-                        stays <b>like a father’s</b> love never leaves.</button>
-                    <button onclick="playSong('songs/9.mp3',this)">If this is a <b>love story</b> , I hope it never
-                        finds an ending.</button>
+                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button>
+                    <button onclick="playSong('songs/2.mp3',this)">You’re my perfect</button>
+                    <button onclick="playSong('songs/3.mp3',this)">I found love</button>
+                    <button onclick="playSong('songs/4.mp3',this)">Tum hi ho</button>
+                    <button onclick="playSong('songs/5.mp3',this)">Loving you forever</button>
+                    <button onclick="playSong('songs/6.mp3',this)">Blue in the best way</button>
+                    <button onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button>
+                    <button onclick="playSong('songs/8.mp3',this)">A father’s love</button>
+                    <button onclick="playSong('songs/9.mp3',this)">Our love story</button>
                 </div>
             </div>
 
+            <!-- CHATBOX (UNCHANGED STRUCTURE) -->
             <div class="chatbox">
                 <div class="chat-header">Chat 💬</div>
                 <div class="chat-messages" id="chatMessages"></div>
 
                 <div class="chat-input">
-
-                    <!-- NAME INPUT -->
-                    <input type="text" id="chatName" placeholder="Your name 💕" style="
-            padding:10px 14px;
-            border-radius:14px;
-            border:1px solid var(--border-soft);
-            font-size:0.95rem;
-        ">
-
-                    <!-- MESSAGE INPUT -->
+                    <input type="text" id="chatName" placeholder="Your name 🤎">
                     <div class="message-block">
                         <textarea id="chatText" placeholder="Type your message"></textarea>
                         <button onclick="sendMessage()">➤</button>
                     </div>
-
                 </div>
             </div>
 
@@ -509,19 +428,17 @@
 
     <audio id="player"></audio>
 
-    <!-- FLOATING HEARTS -->
     <script>
-
         function createHeart() {
             const h = document.createElement("div");
             h.className = "heart";
-            h.innerText = ["❤️", "💖", "💕", "💘", "💗"][Math.floor(Math.random() * 5)];
+            h.innerText = ["🧸", "🤎", "🐻", "💕"][Math.floor(Math.random() * 4)];
             h.style.left = Math.random() * 100 + "vw";
-            h.style.fontSize = 14 + Math.random() * 14 + "px";
+            h.style.fontSize = 16 + Math.random() * 14 + "px";
             document.body.appendChild(h);
             setTimeout(() => h.remove(), 8000);
         }
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 600);
 
         function toggleToday() {
             document.getElementById("todayText").classList.toggle("show");
@@ -538,70 +455,6 @@
         }
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const noBtn = document.getElementById("noBtn");
-            const yesBtn = document.getElementById("yesBtn");
-            const overlay = document.getElementById("valentineOverlay");
-            const noMsg = document.getElementById("noMsg");
-
-            const messages = [
-                "Think again 😌",
-                "I am smart 😏",
-                "I love you a lot ❤️",
-                "Nice try 😜",
-                "You know the answer 😉",
-                "suno naaaaa",
-                "Vashikaaaaa sunooooooo",
-                "I love u babu",
-                "aise krogi ab apne baby k saath",
-                "aur kitna no pr click krogi",
-                "Don't you love me babyyy"
-            ];
-
-            function moveNo() {
-                const area = document.querySelector(".no-area");
-
-                const padding = 10; // safe margin
-                const maxX = area.clientWidth - noBtn.offsetWidth - padding;
-                const maxY = area.clientHeight - noBtn.offsetHeight - padding;
-
-                const x = Math.max(
-                    padding,
-                    Math.random() * maxX
-                );
-                const y = Math.max(
-                    padding,
-                    Math.random() * maxY
-                );
-
-                noBtn.style.left = `${x}px`;
-                noBtn.style.top = `${y}px`;
-
-                noMsg.innerText =
-                    messages[Math.floor(Math.random() * messages.length)];
-            }
-
-            // MOBILE + DESKTOP
-            noBtn.addEventListener("click", moveNo);
-            noBtn.addEventListener("touchstart", moveNo);
-
-            yesBtn.addEventListener("click", () => {
-                overlay.style.animation = "fadeOut 1s forwards";
-
-                // Heart explosion
-                for (let i = 0; i < 35; i++) {
-                    setTimeout(createHeart, i * 40);
-                }
-
-                setTimeout(() => overlay.remove(), 1000);
-            });
-
-        });
-    </script>
-
-    <!-- 🔥 FIREBASE CHAT (UNCHANGED LOGIC) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import {
@@ -638,23 +491,20 @@
                 const m = d.data();
                 const side = m.uid === userId ? "right" : "left";
                 chatMessages.innerHTML += `
-        <div class="msg ${side}">
-            <b>${m.name || "Anonymous"}</b><br>
-            ${m.text}
-            <span class="time">${formatTime(m.time)}</span>
-            ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
-        </div>`;
+                <div class="msg ${side}">
+                    <b>${m.name || "Anonymous"}</b><br>
+                    ${m.text}
+                    <span class="time">${formatTime(m.time)}</span>
+                    ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
+                </div>`;
             });
             chatMessages.scrollTop = chatMessages.scrollHeight;
         });
 
         window.sendMessage = async () => {
-            const name = chatName.value.trim() || "Anonymous 💕";
+            const name = chatName.value.trim() || "Anonymous 🧸";
             const text = chatText.value.trim();
             if (!text) return;
-
-            // save name locally
-            localStorage.setItem("chatName", name);
 
             await addDoc(collection(db, "chat"), {
                 name,
@@ -670,25 +520,6 @@
             await deleteDoc(doc(db, "chat", id));
         };
     </script>
-
-    <!-- VALENTINE POPUP -->
-    <div id="valentineOverlay">
-        <div class="valentine-box">
-            <h1>People celebrate love for a few days…
-                I chose to love you for every lifetime I get.
-                Will you be my Valentine? 💘</h1>
-            <div class="valentine-buttons">
-                <button id="yesBtn">YES 💖</button>
-
-                <div class="no-area">
-                    <button id="noBtn">NO 🙈</button>
-                </div>
-            </div>
-
-            <p id="noMsg"></p>
-            <p id="noMsg"></p>
-        </div>
-    </div>
 
 </body>
 
