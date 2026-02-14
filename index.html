@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 🧸 Teddy Day</title>
+    <title>Unsaid 💘 Valentine</title>
 
     <style>
-        /* ---------------- TEDDY DAY THEME ---------------- */
+        /* ================= VALENTINE THEME ================= */
         :root {
-            --bg-main: #fff6e9;
-            --bg-soft: #fffaf4;
-            --primary: #c47a4a;
-            --secondary: #f2b880;
-            --text-main: #5a3a1e;
-            --text-soft: #8b5e3c;
-            --border-soft: rgba(196, 122, 74, 0.35);
-            --glass: rgba(255, 246, 233, 0.85);
+            --bg-main: #fff0f5;
+            --bg-soft: #fff7fb;
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --text-main: #6a1e2c;
+            --text-soft: #9d3b4f;
+            --border-soft: rgba(255, 77, 109, 0.35);
+            --glass: rgba(255, 240, 245, 0.88);
         }
 
         * {
@@ -26,14 +26,14 @@
         }
 
         body {
-            background: linear-gradient(135deg, #fff1df, #ffe6c7);
+            background: linear-gradient(135deg, #ffe6ec, #ffd1dc);
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* ---------------- NAVBAR ---------------- */
+        /* ================= NAVBAR ================= */
         nav {
             position: sticky;
             top: 0;
@@ -64,13 +64,7 @@
             font-weight: 500;
         }
 
-        .menu-btn {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-        }
-
-        /* ---------------- LAYOUT ---------------- */
+        /* ================= LAYOUT ================= */
         .main-container {
             display: flex;
             justify-content: center;
@@ -83,11 +77,11 @@
             border-radius: 30px;
             padding: 20px;
             box-shadow:
-                0 0 30px rgba(196, 122, 74, .25),
-                0 30px 80px rgba(196, 122, 74, .2);
+                0 0 30px rgba(255, 77, 109, .25),
+                0 30px 80px rgba(255, 77, 109, .2);
         }
 
-        /* ---------------- HEADER ---------------- */
+        /* ================= HEADER ================= */
         .header {
             display: flex;
             align-items: center;
@@ -98,7 +92,7 @@
             min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #f2b880, #ffe3c4);
+            background: linear-gradient(135deg, #ff8fa3, #ffd1dc);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,45 +101,37 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
             50% {
                 transform: scale(1.08);
             }
-
-            100% {
-                transform: scale(1);
-            }
         }
 
-        /* ---------------- MESSAGE ---------------- */
+        /* ================= MESSAGE ================= */
         .message-box {
             margin-top: 30px;
             padding: 22px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #fff1df, #fffaf4);
+            background: linear-gradient(135deg, #ffe6ec, #fff7fb);
             border: 1px solid var(--border-soft);
             line-height: 1.6;
             position: relative;
         }
 
         .message-box::after {
-            content: "🧸 🤎 🧸 🤎";
+            content: "💘 ❤️ 💘 ❤️";
             position: absolute;
             top: -14px;
             right: 18px;
         }
 
-        /* ---------------- TODAY MESSAGE ---------------- */
+        /* ================= TODAY MESSAGE ================= */
         .today-message {
             margin-top: 25px;
             padding: 18px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #ffe3c4, #fffaf4);
+            background: linear-gradient(135deg, #ffd1dc, #fff7fb);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(196, 122, 74, .25);
+            box-shadow: 0 10px 30px rgba(255, 77, 109, .25);
         }
 
         .today-content {
@@ -161,12 +147,12 @@
             max-height: fit-content;
         }
 
-        /* ---------------- SONG PANEL ---------------- */
+        /* ================= SONG PANEL ================= */
         .song-panel {
             margin-top: 30px;
             padding: 20px;
             border-radius: 18px;
-            background: #fff1df;
+            background: #ffe6ec;
         }
 
         .song-list {
@@ -181,23 +167,21 @@
             border-radius: 12px;
             border: none;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff7ee, #ffe3c4);
+            background: linear-gradient(135deg, #fff7fb, #ffd1dc);
             cursor: pointer;
             font-weight: 500;
-            transition: background .3s;
         }
 
-        /* 🔥 ACTIVE SONG — REQUIRED FOR JS */
         .song-list button.active {
-            background: linear-gradient(135deg, #c47a4a, #f2b880);
+            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
             color: white;
         }
 
-        /* ---------------- CHAT ---------------- */
+        /* ================= CHAT ================= */
         .chatbox {
             margin-top: 30px;
             height: 600px;
-            background: linear-gradient(135deg, #ffe3c4, #fffaf4);
+            background: linear-gradient(135deg, #ffd1dc, #fff7fb);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
@@ -219,12 +203,11 @@
         }
 
         .msg {
-            max-width: fit-content;
             padding: 10px 18px;
             margin-bottom: 10px;
             border-radius: 14px;
             font-size: .9rem;
-            position: relative;
+            max-width: fit-content;
         }
 
         .msg.left {
@@ -232,17 +215,8 @@
         }
 
         .msg.right {
-            background: linear-gradient(135deg, #f2b880, #ffe3c4);
+            background: linear-gradient(135deg, #ff8fa3, #ffd1dc);
             margin-left: auto;
-        }
-
-        .msg .delete {
-            font-size: 11px;
-            cursor: pointer;
-            position: absolute;
-            bottom: -14px;
-            right: 6px;
-            opacity: .6;
         }
 
         .msg .time {
@@ -253,7 +227,39 @@
             margin-top: 4px;
         }
 
-        /* ---------------- INPUT ---------------- */
+
+        /* ================= CHAT NAME INPUT STYLING ================= */
+        .chat-input #chatName {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 77, 109, 0.35);
+            outline: none;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            background: #fff0f5;
+            /* soft valentine pink */
+            color: #6a1e2c;
+
+            margin-bottom: 8px;
+        }
+
+        /* Placeholder styling */
+        .chat-input #chatName::placeholder {
+            color: #9d3b4f;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Focus effect */
+        .chat-input #chatName:focus {
+            border-color: #ff4d6d;
+            background: #ffffff;
+        }
+
+        /* ================= INPUT ================= */
         .chat-input {
             display: flex;
             flex-direction: column;
@@ -268,8 +274,7 @@
 
         .message-block textarea {
             flex: 1;
-            resize: none;
-            padding: 10px 14px;
+            padding: 10px;
             border-radius: 14px;
             border: 1px solid var(--border-soft);
         }
@@ -278,17 +283,16 @@
             padding: 10px 16px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(135deg, #c47a4a, #f2b880);
+            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
             color: white;
             cursor: pointer;
         }
 
-        /* ---------------- FLOATING TEDDIES ---------------- */
+        /* ================= FLOATING HEARTS ================= */
         .heart {
             position: fixed;
             bottom: -20px;
             opacity: .7;
-            pointer-events: none;
             animation: floatUp 8s linear infinite;
         }
 
@@ -297,125 +301,83 @@
                 transform: translateY(-110vh);
             }
         }
-
-        /* ================= CHAT NAME INPUT STYLING ================= */
-
-        .chat-input #chatName {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            outline: none;
-
-            font-size: 14px;
-            font-weight: 500;
-
-            background: #fff5f7;
-            /* soft romantic tone */
-            color: #333;
-
-            margin-bottom: 8px;
-        }
-
-        /* Placeholder styling */
-        .chat-input #chatName::placeholder {
-            color: #7d3c4c;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Focus effect (no animation, no JS) */
-        .chat-input #chatName:focus {
-            border-color: #ff4d6d;
-            background: #fff;
-        }
-
-        /* Mobile friendly tap area */
-        .chat-input #chatName {
-            box-sizing: border-box;
-        }
     </style>
 </head>
 
 <body>
 
     <nav>
-        <div class="nav-logo">Unsaid 🧸</div>
+        <div class="nav-logo">Unsaid 💘</div>
         <div class="nav-links">
             <a>Home</a>
             <a>Message</a>
             <a>Music</a>
         </div>
-        <div class="menu-btn">☰</div>
     </nav>
 
     <div class="main-container">
         <div class="card">
 
             <div class="header">
-                <div class="avatar">🧸</div>
+                <div class="avatar">💘</div>
                 <div>
-                    <h1> Hey babyy 🤎</h1>
-                    If hugs had a shape,<br>
-                    they’d look exactly like you ❤️
+                    <h1>Hey my Valentine ❤️</h1>
                 </div>
             </div>
 
             <div class="message-box">
-                <p>If I could, I’d turn myself into your teddy,
-                    so I could be the first thing you hug in the morning
-                    and the last thing you hold at night.</p>
+                <p>
+                    If love had a place,
+                    it would be right next to your heart.
+                    And if I had one wish,
+                    it would be to be the reason you smile every day 🤍
+                </p>
             </div>
 
-            <!-- TODAY MESSAGE -->
             <div class="today-message" onclick="toggleToday()">
-                <b>Today’s Teddy Message 🧸</b>
-                <span> 10 Feb</span>
+                <b>My Valentine Message 💘</b>
+                <span> 14 Feb</span>
                 <div class="today-content" id="todayText">
-                    Happy Teddy Day, my love 🧸<br><br>
+                    Happy Valentine’s Day my love 💘<br><br>
 
-                    Yesterday evening…<br>
-                    I ate the <b>best chocolate of my life</b> —<br>
-                    not from a wrapper,<br>
-                    but from <b>your lips when I kissed you</b> 🤍<br><br>
+                    I know this website came a little late…<br>
+                    and I’m really sorry for that 🥺<br><br>
 
-                    That moment is still melting in my heart,<br>
-                    just like you melt me every single day.<br>
-                    If love had a flavor,<br>
-                    it would taste exactly like <b>you</b>.<br><br>
+                    I didn’t want to rush it,<br>
+                    because when it comes to you,<br>
+                    even my love takes time to become perfect.<br><br>
 
-                    So when you hug your teddy tonight,<br>
-                    remember it’s holding all my warmth,<br>
-                    all my kisses,<br>
-                    and a heart that belongs <b>only to you</b>.<br><br>
+                    This page is a piece of my heart,<br>
+                    written only for you 🤍<br><br>
 
-                    I love you endlessly ❤️
+                    I love you always ❤️
                 </div>
             </div>
 
-            <!-- SONG PANEL (ALL ORIGINAL SONGS) -->
             <div class="song-panel">
-                <h3>Pick a song 🧸🎶</h3>
+                <h3>Play our love 💘🎶</h3>
                 <div class="song-list">
-                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button>
-                    <button onclick="playSong('songs/2.mp3',this)">You’re my perfect</button>
-                    <button onclick="playSong('songs/3.mp3',this)">I found love</button>
-                    <button onclick="playSong('songs/4.mp3',this)">Tum hi ho</button>
-                    <button onclick="playSong('songs/5.mp3',this)">Loving you forever</button>
-                    <button onclick="playSong('songs/6.mp3',this)">Blue in the best way</button>
-                    <button onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button>
-                    <button onclick="playSong('songs/8.mp3',this)">A father’s love</button>
-                    <button onclick="playSong('songs/9.mp3',this)">Our love story</button>
+
+                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button> <button
+                        onclick="playSong('songs/2.mp3',this)">You’re my perfect</button> <button
+                        onclick="playSong('songs/3.mp3',this)">I found love</button> <button
+                        onclick="playSong('songs/4.mp3',this)">Tum hi ho</button> <button
+                        onclick="playSong('songs/5.mp3',this)">Loving you forever</button> <button
+                        onclick="playSong('songs/6.mp3',this)">Blue in the best way</button> <button
+                        onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button> <button
+                        onclick="playSong('songs/8.mp3',this)">A father’s love</button> <button
+                        onclick="playSong('songs/9.mp3',this)">Our love story</button>
+
+
                 </div>
             </div>
 
-            <!-- CHATBOX (UNCHANGED STRUCTURE) -->
             <div class="chatbox">
                 <div class="chat-header">Chat 💬</div>
                 <div class="chat-messages" id="chatMessages"></div>
 
                 <div class="chat-input">
-                    <input type="text" id="chatName" placeholder="Your name 🤎">
+                    <input type="text" id="chatName" placeholder="Your name ❤️">
                     <div class="message-block">
                         <textarea id="chatText" placeholder="Type your message"></textarea>
                         <button onclick="sendMessage()">➤</button>
@@ -432,7 +394,7 @@
         function createHeart() {
             const h = document.createElement("div");
             h.className = "heart";
-            h.innerText = ["🧸", "🤎", "🐻", "💕"][Math.floor(Math.random() * 4)];
+            h.innerText = ["❤️", "💘", "💕", "💞"][Math.floor(Math.random() * 4)];
             h.style.left = Math.random() * 100 + "vw";
             h.style.fontSize = 16 + Math.random() * 14 + "px";
             document.body.appendChild(h);
@@ -446,6 +408,7 @@
 
         const player = document.getElementById("player");
         let currentBtn = null;
+
         function playSong(src, btn) {
             if (currentBtn) currentBtn.classList.remove("active");
             btn.classList.add("active");
@@ -455,6 +418,7 @@
         }
     </script>
 
+    <!-- ================= FIREBASE (UNCHANGED) ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import {
@@ -495,14 +459,14 @@
                     <b>${m.name || "Anonymous"}</b><br>
                     ${m.text}
                     <span class="time">${formatTime(m.time)}</span>
-                    ${m.uid === userId ? `<span class="delete" onclick="delMsg('${d.id}')">delete</span>` : ""}
+                    ${m.uid === userId ? `<span onclick="delMsg('${d.id}')">delete</span>` : ""}
                 </div>`;
             });
             chatMessages.scrollTop = chatMessages.scrollHeight;
         });
 
         window.sendMessage = async () => {
-            const name = chatName.value.trim() || "Anonymous 🧸";
+            const name = chatName.value.trim() || "Anonymous ❤️";
             const text = chatText.value.trim();
             if (!text) return;
 
