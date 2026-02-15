@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 💘 Valentine</title>
+    <title>Unsaid 🤍 Still Yours</title>
 
     <style>
-        /* ================= VALENTINE THEME ================= */
+        /* ================= 15 FEB THEME ================= */
         :root {
-            --bg-main: #fff0f5;
-            --bg-soft: #fff7fb;
-            --primary: #ff4d6d;
-            --secondary: #ff8fa3;
-            --text-main: #6a1e2c;
-            --text-soft: #9d3b4f;
-            --border-soft: rgba(255, 77, 109, 0.35);
-            --glass: rgba(255, 240, 245, 0.88);
+            --bg-main: #f7f6f3;
+            --bg-soft: #ffffff;
+            --primary: #6b4e3d;
+            --secondary: #c9b6a3;
+            --text-main: #3f2a1d;
+            --text-soft: #6e5445;
+            --border-soft: rgba(107, 78, 61, 0.25);
+            --glass: rgba(247, 246, 243, 0.9);
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffe6ec, #ffd1dc);
+            background: linear-gradient(135deg, #f3efe9, #ebe3d9);
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
@@ -77,8 +77,8 @@
             border-radius: 30px;
             padding: 20px;
             box-shadow:
-                0 0 30px rgba(255, 77, 109, .25),
-                0 30px 80px rgba(255, 77, 109, .2);
+                0 0 30px rgba(0, 0, 0, .08),
+                0 30px 80px rgba(0, 0, 0, .05);
         }
 
         /* ================= HEADER ================= */
@@ -92,7 +92,7 @@
             min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff8fa3, #ffd1dc);
+            background: linear-gradient(135deg, #e6d8cc, #f3efe9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,14 +111,14 @@
             margin-top: 30px;
             padding: 22px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #ffe6ec, #fff7fb);
+            background: linear-gradient(135deg, #f3efe9, #ffffff);
             border: 1px solid var(--border-soft);
             line-height: 1.6;
             position: relative;
         }
 
         .message-box::after {
-            content: "💘 ❤️ 💘 ❤️";
+            content: "🤍 🤎 🤍 🤎";
             position: absolute;
             top: -14px;
             right: 18px;
@@ -129,9 +129,9 @@
             margin-top: 25px;
             padding: 18px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #ffd1dc, #fff7fb);
+            background: linear-gradient(135deg, #e6d8cc, #ffffff);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, .25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
         }
 
         .today-content {
@@ -152,7 +152,7 @@
             margin-top: 30px;
             padding: 20px;
             border-radius: 18px;
-            background: #ffe6ec;
+            background: #f3efe9;
         }
 
         .song-list {
@@ -167,13 +167,13 @@
             border-radius: 12px;
             border: none;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff7fb, #ffd1dc);
+            background: linear-gradient(135deg, #ffffff, #e6d8cc);
             cursor: pointer;
             font-weight: 500;
         }
 
         .song-list button.active {
-            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+            background: linear-gradient(135deg, #6b4e3d, #c9b6a3);
             color: white;
         }
 
@@ -181,7 +181,7 @@
         .chatbox {
             margin-top: 30px;
             height: 600px;
-            background: linear-gradient(135deg, #ffd1dc, #fff7fb);
+            background: linear-gradient(135deg, #e6d8cc, #ffffff);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
@@ -203,11 +203,11 @@
         }
 
         .msg {
+            max-width: fit-content;
             padding: 10px 18px;
             margin-bottom: 10px;
             border-radius: 14px;
             font-size: .9rem;
-            max-width: fit-content;
         }
 
         .msg.left {
@@ -215,7 +215,7 @@
         }
 
         .msg.right {
-            background: linear-gradient(135deg, #ff8fa3, #ffd1dc);
+            background: linear-gradient(135deg, #c9b6a3, #e6d8cc);
             margin-left: auto;
         }
 
@@ -225,38 +225,6 @@
             color: #555;
             text-align: right;
             margin-top: 4px;
-        }
-
-
-        /* ================= CHAT NAME INPUT STYLING ================= */
-        .chat-input #chatName {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 77, 109, 0.35);
-            outline: none;
-
-            font-size: 14px;
-            font-weight: 500;
-
-            background: #fff0f5;
-            /* soft valentine pink */
-            color: #6a1e2c;
-
-            margin-bottom: 8px;
-        }
-
-        /* Placeholder styling */
-        .chat-input #chatName::placeholder {
-            color: #9d3b4f;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Focus effect */
-        .chat-input #chatName:focus {
-            border-color: #ff4d6d;
-            background: #ffffff;
         }
 
         /* ================= INPUT ================= */
@@ -274,7 +242,7 @@
 
         .message-block textarea {
             flex: 1;
-            padding: 10px;
+            padding: 10px 14px;
             border-radius: 14px;
             border: 1px solid var(--border-soft);
         }
@@ -283,16 +251,38 @@
             padding: 10px 16px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+            background: linear-gradient(135deg, #6b4e3d, #c9b6a3);
             color: white;
             cursor: pointer;
         }
 
-        /* ================= FLOATING HEARTS ================= */
+        /* ===== NAME INPUT STYLING ===== */
+        .chat-input #chatName {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(107, 78, 61, 0.3);
+            background: #f7f6f3;
+            color: #3f2a1d;
+            font-weight: 500;
+        }
+
+        .chat-input #chatName::placeholder {
+            color: #6e5445;
+        }
+
+        .chat-input #chatName:focus {
+            outline: none;
+            border-color: #6b4e3d;
+            background: #ffffff;
+        }
+
+        /* ================= FLOATING SYMBOLS ================= */
         .heart {
             position: fixed;
             bottom: -20px;
             opacity: .7;
+            pointer-events: none;
             animation: floatUp 8s linear infinite;
         }
 
@@ -307,7 +297,7 @@
 <body>
 
     <nav>
-        <div class="nav-logo">Unsaid 💘</div>
+        <div class="nav-logo">Unsaid 🤍</div>
         <div class="nav-links">
             <a>Home</a>
             <a>Message</a>
@@ -319,56 +309,51 @@
         <div class="card">
 
             <div class="header">
-                <div class="avatar">💘</div>
+                <div class="avatar">🤍</div>
                 <div>
-                    <h1>Hey my Valentine ❤️</h1>
+                    <h1>Hey… still yours 🤍</h1>
                 </div>
             </div>
 
             <div class="message-box">
                 <p>
-                    If love had a place,
-                    it would be right next to your heart.
-                    And if I had one wish,
-                    it would be to be the reason you smile every day 🤍
+                    Valentine’s Day has passed,<br>
+                    dates may change,<br>
+                    celebrations end…<br><br>
+
+                    but my love for you stays,<br>
+                    calm, real, and constant 🤍
                 </p>
             </div>
 
             <div class="today-message" onclick="toggleToday()">
-                <b>My Valentine Message 💘</b>
-                <span> 14 Feb</span>
+                <b>15 February 🤍</b>
+                <span> not a special date, but special feelings</span>
+
                 <div class="today-content" id="todayText">
-                    Happy Valentine’s Day my love 💘<br><br>
+                    Valentine’s Day is over,<br>
+                    but I’m still here 🤍<br><br>
 
-                    I know this website came a little late…<br>
-                    and I’m really sorry for that 🥺<br><br>
+                    I don’t love you because of a date,<br>
+                    I love you because it’s *you*.<br><br>
 
-                    I didn’t want to rush it,<br>
-                    because when it comes to you,<br>
-                    even my love takes time to become perfect.<br><br>
+                    Flowers fade,<br>
+                    moments pass,<br>
+                    but what I feel stays quietly,<br>
+                    every single day 🤎<br><br>
 
-                    This page is a piece of my heart,<br>
-                    written only for you 🤍<br><br>
-
-                    I love you always ❤️
+                    Still choosing you.<br>
+                    Still holding you.<br>
+                    Still yours 🤍
                 </div>
             </div>
 
             <div class="song-panel">
-                <h3>Play our love 💘🎶</h3>
+                <h3>For us, not for a date 🎶</h3>
                 <div class="song-list">
-
-                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button> <button
-                        onclick="playSong('songs/2.mp3',this)">You’re my perfect</button> <button
-                        onclick="playSong('songs/3.mp3',this)">I found love</button> <button
-                        onclick="playSong('songs/4.mp3',this)">Tum hi ho</button> <button
-                        onclick="playSong('songs/5.mp3',this)">Loving you forever</button> <button
-                        onclick="playSong('songs/6.mp3',this)">Blue in the best way</button> <button
-                        onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button> <button
-                        onclick="playSong('songs/8.mp3',this)">A father’s love</button> <button
-                        onclick="playSong('songs/9.mp3',this)">Our love story</button>
-
-
+                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button>
+                    <button onclick="playSong('songs/2.mp3',this)">You’re my perfect</button>
+                    <button onclick="playSong('songs/3.mp3',this)">I found love</button>
                 </div>
             </div>
 
@@ -377,7 +362,7 @@
                 <div class="chat-messages" id="chatMessages"></div>
 
                 <div class="chat-input">
-                    <input type="text" id="chatName" placeholder="Your name ❤️">
+                    <input type="text" id="chatName" placeholder="Your name 🤍">
                     <div class="message-block">
                         <textarea id="chatText" placeholder="Type your message"></textarea>
                         <button onclick="sendMessage()">➤</button>
@@ -394,7 +379,7 @@
         function createHeart() {
             const h = document.createElement("div");
             h.className = "heart";
-            h.innerText = ["❤️", "💘", "💕", "💞"][Math.floor(Math.random() * 4)];
+            h.innerText = ["🤍", "🤎", "✨", "🫶"][Math.floor(Math.random() * 4)];
             h.style.left = Math.random() * 100 + "vw";
             h.style.fontSize = 16 + Math.random() * 14 + "px";
             document.body.appendChild(h);
@@ -466,7 +451,7 @@
         });
 
         window.sendMessage = async () => {
-            const name = chatName.value.trim() || "Anonymous ❤️";
+            const name = chatName.value.trim() || "Anonymous 🤍";
             const text = chatText.value.trim();
             if (!text) return;
 
@@ -486,5 +471,4 @@
     </script>
 
 </body>
-
 </html>
