@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 🤍 Still Yours</title>
+    <title>Unsaid 🤍 Always Us</title>
 
     <style>
-        /* ================= 15 FEB THEME ================= */
+        /* ================= GENERAL LOVE THEME ================= */
         :root {
-            --bg-main: #f7f6f3;
+            --bg-main: #fff7fb;
             --bg-soft: #ffffff;
-            --primary: #6b4e3d;
-            --secondary: #c9b6a3;
-            --text-main: #3f2a1d;
-            --text-soft: #6e5445;
-            --border-soft: rgba(107, 78, 61, 0.25);
-            --glass: rgba(247, 246, 243, 0.9);
+            --primary: #ff7aa2;
+            --secondary: #ffd1e1;
+            --text-main: #4b2b36;
+            --text-soft: #7a4a5a;
+            --border-soft: rgba(255, 122, 162, 0.25);
+            --glass: rgba(255, 247, 251, 0.9);
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f3efe9, #ebe3d9);
+            background: linear-gradient(135deg, #ffeaf2, #fff5f9);
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
@@ -77,8 +77,8 @@
             border-radius: 30px;
             padding: 20px;
             box-shadow:
-                0 0 30px rgba(0, 0, 0, .08),
-                0 30px 80px rgba(0, 0, 0, .05);
+                0 0 30px rgba(255, 122, 162, .15),
+                0 30px 80px rgba(255, 122, 162, .1);
         }
 
         /* ================= HEADER ================= */
@@ -92,7 +92,7 @@
             min-width: 90px;
             min-height: 90px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #e6d8cc, #f3efe9);
+            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,14 +111,14 @@
             margin-top: 30px;
             padding: 22px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #f3efe9, #ffffff);
+            background: linear-gradient(135deg, #ffeaf2, #ffffff);
             border: 1px solid var(--border-soft);
-            line-height: 1.6;
+            line-height: 1.7;
             position: relative;
         }
 
         .message-box::after {
-            content: "🤍 🤎 🤍 🤎";
+            content: "🤍 💕 🤍 💕";
             position: absolute;
             top: -14px;
             right: 18px;
@@ -129,9 +129,9 @@
             margin-top: 25px;
             padding: 18px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #e6d8cc, #ffffff);
+            background: linear-gradient(135deg, #ffd1e1, #ffffff);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+            box-shadow: 0 10px 30px rgba(255, 122, 162, .2);
         }
 
         .today-content {
@@ -152,7 +152,7 @@
             margin-top: 30px;
             padding: 20px;
             border-radius: 18px;
-            background: #f3efe9;
+            background: #ffeaf2;
         }
 
         .song-list {
@@ -167,13 +167,13 @@
             border-radius: 12px;
             border: none;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffffff, #e6d8cc);
+            background: linear-gradient(135deg, #ffffff, #ffd1e1);
             cursor: pointer;
             font-weight: 500;
         }
 
         .song-list button.active {
-            background: linear-gradient(135deg, #6b4e3d, #c9b6a3);
+            background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
             color: white;
         }
 
@@ -181,7 +181,7 @@
         .chatbox {
             margin-top: 30px;
             height: 600px;
-            background: linear-gradient(135deg, #e6d8cc, #ffffff);
+            background: linear-gradient(135deg, #ffd1e1, #ffffff);
             border-radius: 20px;
             border: 1px solid var(--border-soft);
             padding: 12px;
@@ -215,7 +215,7 @@
         }
 
         .msg.right {
-            background: linear-gradient(135deg, #c9b6a3, #e6d8cc);
+            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
             margin-left: auto;
         }
 
@@ -251,33 +251,33 @@
             padding: 10px 16px;
             border-radius: 14px;
             border: none;
-            background: linear-gradient(135deg, #6b4e3d, #c9b6a3);
+            background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
             color: white;
             cursor: pointer;
         }
 
-        /* ===== NAME INPUT STYLING ===== */
+        /* ===== NAME INPUT ===== */
         .chat-input #chatName {
             width: 100%;
             padding: 10px 14px;
             border-radius: 14px;
-            border: 1px solid rgba(107, 78, 61, 0.3);
-            background: #f7f6f3;
-            color: #3f2a1d;
+            border: 1px solid rgba(255, 122, 162, 0.3);
+            background: #fff0f6;
+            color: #4b2b36;
             font-weight: 500;
         }
 
         .chat-input #chatName::placeholder {
-            color: #6e5445;
+            color: #7a4a5a;
         }
 
         .chat-input #chatName:focus {
             outline: none;
-            border-color: #6b4e3d;
+            border-color: #ff7aa2;
             background: #ffffff;
         }
 
-        /* ================= FLOATING SYMBOLS ================= */
+        /* ================= FLOATING LOVE ================= */
         .heart {
             position: fixed;
             bottom: -20px;
@@ -309,51 +309,60 @@
         <div class="card">
 
             <div class="header">
-                <div class="avatar">🤍</div>
+                <div class="avatar">💕</div>
                 <div>
-                    <h1>Hey… still yours 🤍</h1>
+                    <h1>Hey love 🤍</h1>
                 </div>
             </div>
 
             <div class="message-box">
                 <p>
-                    Valentine’s Day has passed,<br>
-                    dates may change,<br>
-                    celebrations end…<br><br>
+                    I may forget small things,<br>
+                    I may get confused sometimes,<br>
+                    but one thing I never forget is <b>you</b>.<br><br>
 
-                    but my love for you stays,<br>
-                    calm, real, and constant 🤍
+                    You are my comfort,<br>
+                    my safe place,<br>
+                    my favorite person 🤍
                 </p>
             </div>
 
             <div class="today-message" onclick="toggleToday()">
-                <b>15 February 🤍</b>
-                <span> not a special date, but special feelings</span>
+                <b>Today's message - 16 Feb -- Something from my heart 🤍</b>
 
                 <div class="today-content" id="todayText">
-                    Valentine’s Day is over,<br>
-                    but I’m still here 🤍<br><br>
 
-                    I don’t love you because of a date,<br>
-                    I love you because it’s *you*.<br><br>
+                    I couldn’t guess your phone password,<br>
+                    not because that date is not important to me,<br>
+                    but because my brain failed me in that moment 😔<br><br>
 
-                    Flowers fade,<br>
-                    moments pass,<br>
-                    but what I feel stays quietly,<br>
-                    every single day 🤎<br><br>
+                    The truth is,<br>
+                    that date matters to me a lot.<br>
+                    It’s the day *we* started 🤍<br><br>
 
-                    Still choosing you.<br>
-                    Still holding you.<br>
-                    Still yours 🤍
+                    Please don’t think my love is less<br>
+                    just because I forgot a number.<br><br>
+
+                    I remember *us* every day,<br>
+                    and I choose you every day ❤️
                 </div>
             </div>
 
             <div class="song-panel">
-                <h3>For us, not for a date 🎶</h3>
+                <h3>Our little love songs 🎶</h3>
                 <div class="song-list">
-                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button>
-                    <button onclick="playSong('songs/2.mp3',this)">You’re my perfect</button>
-                    <button onclick="playSong('songs/3.mp3',this)">I found love</button>
+
+                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button> <button
+                        onclick="playSong('songs/2.mp3',this)">You’re my perfect</button> <button
+                        onclick="playSong('songs/3.mp3',this)">I found love</button> <button
+                        onclick="playSong('songs/4.mp3',this)">Tum hi ho</button> <button
+                        onclick="playSong('songs/5.mp3',this)">Loving you forever</button> <button
+                        onclick="playSong('songs/6.mp3',this)">Blue in the best way</button> <button
+                        onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button> <button
+                        onclick="playSong('songs/8.mp3',this)">A father’s love</button> <button
+                        onclick="playSong('songs/9.mp3',this)">Our love story</button>
+
+
                 </div>
             </div>
 
@@ -379,7 +388,7 @@
         function createHeart() {
             const h = document.createElement("div");
             h.className = "heart";
-            h.innerText = ["🤍", "🤎", "✨", "🫶"][Math.floor(Math.random() * 4)];
+            h.innerText = ["🤍", "💕", "💗", "🫶"][Math.floor(Math.random() * 4)];
             h.style.left = Math.random() * 100 + "vw";
             h.style.fontSize = 16 + Math.random() * 14 + "px";
             document.body.appendChild(h);
@@ -471,4 +480,5 @@
     </script>
 
 </body>
+
 </html>
