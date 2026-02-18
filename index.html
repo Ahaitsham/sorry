@@ -312,7 +312,7 @@
                 <div class="avatar">💕</div>
                 <div>
                     <h1 class="dynamic-msg">Hey babe 🤍</h1>
-                    <p class="counter-msg">fadf</p>
+                    <p class="counter-msg"></p>
                 </div>
             </div>
 
@@ -327,22 +327,22 @@
 
                 <div class="today-content" id="todayText">
 
-                   <p>You are my baby</p><br>
-                   <p>The one I care about the most</p><br><br>
-                   <p>You are my girlfriend</p><br>
-                   <p>The one who makes me happy</p><br><br>
-                   <p>You are my future wife</p><br>
-                   <p>The one I care about the most</p><br><br>
-                   <p>You are my world</p><br>
-                   <p>When I have you I have everything</p><br><br>
-                   <p>You are my love</p><br>
-                   <p>My heart feels safe with you</p><br><br>
-                   <p>You are my sweet girl.</p><br>
-                   <p>You make my days better.</p><br><br>
-                   <p>You are my everything</p><br>
-                   <p>My smile</p><br>
-                   <p>My peace</p><br>
-                   <p>My home❤️</p><br>
+                    <p>You are my baby</p>
+                    <p>The one I care about the most</p><br><br>
+                    <p>You are my girlfriend</p>
+                    <p>The one who makes me happy</p><br><br>
+                    <p>You are my future wife</p>
+                    <p>The one I care about the most</p><br><br>
+                    <p>You are my world</p>
+                    <p>When I have you I have everything</p><br><br>
+                    <p>You are my love</p>
+                    <p>My heart feels safe with you</p><br><br>
+                    <p>You are my sweet girl.</p>
+                    <p>You make my days better.</p><br><br>
+                    <p>You are my everything</p>
+                    <p>My smile</p>
+                    <p>My peace</p>
+                    <p>My home❤️</p>
 
 
 
@@ -385,6 +385,10 @@
 
     <audio id="player"></audio>
 
+    <audio id="todayPlayer" preload="auto">
+        <source src="songs/demo.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         function createHeart() {
             const h = document.createElement("div");
@@ -397,8 +401,19 @@
         }
         setInterval(createHeart, 600);
 
+        const todayPlayer = document.getElementById("todayPlayer");
+        let todaySongPlayed = false;
+
         function toggleToday() {
-            document.getElementById("todayText").classList.toggle("show");
+            const content = document.getElementById("todayText");
+            content.classList.toggle("show");
+
+            // Play today's special song only once
+            if (content.classList.contains("show") && !todaySongPlayed) {
+                todayPlayer.currentTime = 0;
+                todayPlayer.play();
+                todaySongPlayed = true;
+            }
         }
 
         const player = document.getElementById("player");
@@ -486,11 +501,11 @@
         let message = "";
 
         if (hour >= 5 && hour < 12) {
-            message = "Good Morning Babe";
+            message = "Good morning my love 🤍";
         } else if (hour >= 12 && hour < 17) {
             message = "Good Afternoon Babe";
         } else if (hour >= 17 && hour < 21) {
-            message = "Good Evening Babe";
+            message = "Good evening my heart 💕 Thinking of you makes my day better.";
         } else {
             message = "Good Night Babe";
         }
@@ -498,32 +513,32 @@
         msgElement.textContent = message;
 
 
-        
+
 
     </script>
 
     <script>
-  const counterElement = document.querySelector(".counter-msg");
+        const counterElement = document.querySelector(".counter-msg");
 
-  // Relationship start date (29 Jan 2026)
-  const startDate = new Date("2026-01-29T00:00:00");
+        // Relationship start date (29 Jan 2026)
+        const startDate = new Date("2026-01-29T00:00:00");
 
-  function updateCounter() {
-    const now = new Date();
-    const diff = now - startDate;
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
 
-    counterElement.textContent = 
-      `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds together ❤️`;
-  }
+            counterElement.textContent =
+                `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds together ❤️`;
+        }
 
-  updateCounter(); // initial call
-  setInterval(updateCounter, 1000);
-</script>
+        updateCounter(); // initial call
+        setInterval(updateCounter, 1000);
+    </script>
 </body>
 
 </html>
