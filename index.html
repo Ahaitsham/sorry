@@ -312,6 +312,7 @@
                 <div class="avatar">💕</div>
                 <div>
                     <h1 class="dynamic-msg">Hey babe 🤍</h1>
+                    <p class="counter-msg">fadf</p>
                 </div>
             </div>
 
@@ -496,7 +497,33 @@
 
         msgElement.textContent = message;
 
+
+        
+
     </script>
+
+    <script>
+  const counterElement = document.querySelector(".counter-msg");
+
+  // Relationship start date (29 Jan 2026)
+  const startDate = new Date("2026-01-29T00:00:00");
+
+  function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    counterElement.textContent = 
+      `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds together ❤️`;
+  }
+
+  updateCounter(); // initial call
+  setInterval(updateCounter, 1000);
+</script>
 </body>
 
 </html>
