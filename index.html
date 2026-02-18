@@ -311,30 +311,40 @@
             <div class="header">
                 <div class="avatar">💕</div>
                 <div>
-                    <h1>Hey babe 🤍</h1>
+                    <h1 class="dynamic-msg">Hey babe 🤍</h1>
                 </div>
             </div>
 
             <div class="message-box">
                 <p>
-                    Before I met you, I never knew love could feel this way.<br><br>
-With you, it feels gentle and kind... like something I don't have to run from anymore.<br><br>
-This is how I know what we have together is something real and meant to be.
+                    Today I love you even more than I did yesterday
                 </p>
             </div>
 
             <div class="today-message" onclick="toggleToday()">
-                <b>Today's message - 17 Feb -- Something from my heart 🤍</b>
+                <b>Today's message - 18 Feb -- Something from my heart 🤍</b>
 
                 <div class="today-content" id="todayText">
 
-                    We've already done the hardest part finding each other among millions of souls.<br><br>
-Out of all the paths, hearts, and moments, fate quietly chose <i>us</i>.<br><br>
-Now let’s do the easiest and most beautiful thing…<br>
-hold on to each other, love each other a little more every day,<br>
-and never, ever lose what our hearts found.<br><br>
-I love you more than words, more than distance, more than time.
-                    
+                   <p>You are my baby</p><br>
+                   <p>The one I care about the most</p><br><br>
+                   <p>You are my girlfriend</p><br>
+                   <p>The one who makes me happy</p><br><br>
+                   <p>You are my future wife</p><br>
+                   <p>The one I care about the most</p><br><br>
+                   <p>You are my world</p><br>
+                   <p>When I have you I have everything</p><br><br>
+                   <p>You are my love</p><br>
+                   <p>My heart feels safe with you</p><br><br>
+                   <p>You are my sweet girl.</p><br>
+                   <p>You make my days better.</p><br><br>
+                   <p>You are my everything</p><br>
+                   <p>My smile</p><br>
+                   <p>My peace</p><br>
+                   <p>My home❤️</p><br>
+
+
+
                 </div>
             </div>
 
@@ -468,7 +478,25 @@ I love you more than words, more than distance, more than time.
             await deleteDoc(doc(db, "chat", id));
         };
     </script>
+    <script>
+        const msgElement = document.querySelector(".dynamic-msg");
 
+        const hour = new Date().getHours();
+        let message = "";
+
+        if (hour >= 5 && hour < 12) {
+            message = "Good Morning Babe";
+        } else if (hour >= 12 && hour < 17) {
+            message = "Good Afternoon Babe";
+        } else if (hour >= 17 && hour < 21) {
+            message = "Good Evening Babe";
+        } else {
+            message = "Good Night Babe";
+        }
+
+        msgElement.textContent = message;
+
+    </script>
 </body>
 
 </html>
