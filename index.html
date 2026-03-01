@@ -339,64 +339,42 @@
                     But one thing is for sure: <br>
                     You're perfect for me. -->
 
-                <p>If someone asks about the most beautiful moment of my life</p>
-                <p>I will tell them about the day <b>I met you darling</b></p>
+                <!-- <p>If someone asks about the most beautiful moment of my life</p>
 
+                <p>I will tell them about the day <b>I met you darling</b></p> -->
+
+                <p>I'm that type of guy who fix your dress in public... and rip it off with teeths in private</p>
 
             </div>
 
             <div class="today-message" onclick="toggleToday()">
-                <b>Today's message - 28 Feb - </b>
+                <b>Today's message - <span class="today-date">1</span> </b>
                 <i>! It contains music bby</i> 🤍
-
+x`
                 <div class="today-content" id="todayText">
 
-                    <p>I need you</p>
+                    <p>when I say you're mine</p>
+                    <p>I dont mean you belong to me </p>
+                    <p>I mean you belong with me like,</p>
+                    <p>the tide belongs to the moon</p>
+                    <p>or the stars belong to the sky</p>
                     <br>
-                    <p>not in the way</p>
-                    <p>a child needs a toy,</p>
-                    <p>a dog <i>needs</i> a bone,</p>
-                    <p>or a person <i>needs</i> a phone,</p>
+                    <p>When I say I want you,</p>
+                    <p>I dont mean all to myself</p>
+                    <p>I mean I want to witness our life unfold like,</p>
+                    <p>the sun watches flower bloom or a window</p>
+                    <p>watches the season change.</p>
                     <br>
-
-                    <p>but in the way</p>
-                    <p>the ocean <i>needs</i> salt</p>
-                    <p>a flower <i>needs</i> water</p>
-                    <p>a heart <i>needs</i> blood</p>
-
-                    <p><b>Sooooooooo</b></p>
-                    30 days ago, we started something that already feels bigger than time itself. 🤍<br><br>
-
-                    It’s only been a month…<br>
-                    but somehow, you’ve become my comfort, my excitement, my peace, and my favorite person all at
-                    once.<br><br>
-
-                    In just 30 days,<br>
-                    you’ve made ordinary moments feel magical,<br>
-                    simple conversations feel special,<br>
-                    and distance feel smaller than it actually is.<br><br>
-
-                    Being with you feels natural.<br>
-                    Like my heart recognized yours before I even understood what was happening.<br><br>
-
-                    I love the way you make me smile without trying.<br>
-                    I love the way your voice calms me down.<br>
-                    I love the way you look at me like I matter.<br><br>
-
-                    And if 30 days can feel this beautiful…<br>
-                    imagine a lifetime.<br><br>
-
-                    I don’t just want more months with you.<br>
-                    I don’t just want more memories.<br>
-                    I want mornings with you.<br>
-                    I want random hugs in the kitchen.<br>
-                    I want long drives that feel like seconds.<br>
-                    I want to grow with you, build with you, dream with you.<br><br>
-
-                    I want the rest of my life with you.<br><br>
-
-                    Happy 30 days to us, my love. 🤍<br>
-                    And this is just the beginning.
+                    <p>When I say I'll never let you go,</p>
+                    <p>I don't mean I'll hold you tightly</p>
+                    <p>I mean I'll stand by you like the shore</p>
+                    <p>meets the sea, always returning, always near.</p>
+                    <br>
+                    <p><i>Really</i>, when I say you're mine</p>
+                    <p>I guess what I mean is,</p>
+                    <p><b>I'm yours</b></p>
+                    <br>
+                    <p>I Love you sweetheart 💖</p>
                 </div>
 
 
@@ -577,9 +555,18 @@
 
         // Relationship start date (29 Jan 2026)
         const startDate = new Date("2026-01-29T00:00:00");
+        const todayDate= document.querySelector(".today-date");
+        const now = new Date();
+            const day= now.getDate();
+            const month = now.toLocaleString('en-US', { month: 'long' });
+            const dateString = `${day} ${month}`;
+            console.log(dateString);
+
+            todayDate.innerText = dateString;
 
         function updateCounter() {
             const now = new Date();
+
             const diff = now - startDate;
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
