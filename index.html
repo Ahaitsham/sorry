@@ -1,596 +1,605 @@
-<!doctype html>
-<html lang="en">
+    <!doctype html>
+    <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 🤍 Always Us</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Unsaid 🤍 Always Us</title>
 
-    <style>
-        /* ================= GENERAL LOVE THEME ================= */
-        :root {
-            --bg-main: #fff7fb;
-            --bg-soft: #ffffff;
-            --primary: #ff7aa2;
-            --secondary: #ffd1e1;
-            --text-main: #4b2b36;
-            --text-soft: #7a4a5a;
-            --border-soft: rgba(255, 122, 162, 0.25);
-            --glass: rgba(255, 247, 251, 0.9);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #ffeaf2, #fff5f9);
-            font-family: "Poppins", system-ui;
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ================= NAVBAR ================= */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-soft);
-            padding: 14px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-soft);
-            font-weight: 500;
-        }
-
-        /* ================= LAYOUT ================= */
-        .main-container {
-            display: flex;
-            justify-content: center;
-            padding: 60px 20px;
-        }
-
-        .card {
-            width: min(1000px, 100%);
-            background: var(--bg-soft);
-            border-radius: 30px;
-            padding: 20px;
-            box-shadow:
-                0 0 30px rgba(255, 122, 162, .15),
-                0 30px 80px rgba(255, 122, 162, .1);
-        }
-
-        /* ================= HEADER ================= */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .avatar {
-            min-width: 90px;
-            min-height: 90px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            50% {
-                transform: scale(1.08);
+        <style>
+            /* ================= GENERAL LOVE THEME ================= */
+            :root {
+                --bg-main: #fff7fb;
+                --bg-soft: #ffffff;
+                --primary: #ff7aa2;
+                --secondary: #ffd1e1;
+                --text-main: #4b2b36;
+                --text-soft: #7a4a5a;
+                --border-soft: rgba(255, 122, 162, 0.25);
+                --glass: rgba(255, 247, 251, 0.9);
             }
-        }
 
-        /* ================= MESSAGE ================= */
-        .message-box {
-            margin-top: 30px;
-            padding: 22px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #ffeaf2, #ffffff);
-            border: 1px solid var(--border-soft);
-            line-height: 1.7;
-            position: relative;
-        }
-
-        .message-box::after {
-            content: "🤍 💕 🤍 💕";
-            position: absolute;
-            top: -14px;
-            right: 18px;
-        }
-
-        /* ================= TODAY MESSAGE ================= */
-        .today-message {
-            margin-top: 25px;
-            padding: 18px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #ffd1e1, #ffffff);
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 122, 162, .2);
-        }
-
-        .today-content {
-            margin-top: 12px;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: .4s ease;
-        }
-
-        .today-content.show {
-            opacity: 1;
-            max-height: fit-content;
-        }
-
-        /* ================= SONG PANEL ================= */
-        .song-panel {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 18px;
-            background: #ffeaf2;
-        }
-
-        .song-list {
-            height: 200px;
-            overflow-y: scroll;
-        }
-
-        .song-list button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border-radius: 12px;
-            border: none;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffffff, #ffd1e1);
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .song-list button.active {
-            background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
-            color: white;
-        }
-
-        /* ================= CHAT ================= */
-        .chatbox {
-            margin-top: 30px;
-            height: 600px;
-            background: linear-gradient(135deg, #ffd1e1, #ffffff);
-            border-radius: 20px;
-            border: 1px solid var(--border-soft);
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 10px;
-            background: #ffffffcc;
-            border-radius: 14px;
-        }
-
-        .msg {
-            max-width: fit-content;
-            padding: 10px 18px;
-            margin-bottom: 10px;
-            border-radius: 14px;
-
-            font-size: .9rem;
-        }
-
-        .love-msg {
-            color: rgb(160, 31, 31);
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        .msg.left {
-            background: #ffffff;
-        }
-
-        .msg.right {
-            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
-            margin-left: auto;
-        }
-
-        .msg .time {
-            display: block;
-            font-size: 10px;
-            color: #555;
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        /* ================= INPUT ================= */
-        .chat-input {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .message-block {
-            display: flex;
-            gap: 8px;
-        }
-
-        .message-block textarea {
-            flex: 1;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--border-soft);
-        }
-
-        .message-block button {
-            padding: 10px 16px;
-            border-radius: 14px;
-            border: none;
-            background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
-            color: white;
-            cursor: pointer;
-        }
-
-        /* ===== NAME INPUT ===== */
-        .chat-input #chatName {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 122, 162, 0.3);
-            background: #fff0f6;
-            color: #4b2b36;
-            font-weight: 500;
-        }
-
-        .chat-input #chatName::placeholder {
-            color: #7a4a5a;
-        }
-
-        .chat-input #chatName:focus {
-            outline: none;
-            border-color: #ff7aa2;
-            background: #ffffff;
-        }
-
-        /* ================= FLOATING LOVE ================= */
-        .heart {
-            position: fixed;
-            bottom: -20px;
-            opacity: .7;
-            pointer-events: none;
-            animation: floatUp 8s linear infinite;
-        }
-
-
-
-        @keyframes floatUp {
-            to {
-                transform: translateY(-110vh);
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-        }
-    </style>
-</head>
 
-<body>
+            body {
+                background: linear-gradient(135deg, #ffeaf2, #fff5f9);
+                font-family: "Poppins", system-ui;
+                color: var(--text-main);
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
 
-    <nav>
-        <div class="nav-logo">Unsaid 🤍</div>
-        <div class="nav-links">
-            <a>Home</a>
-            <a>Message</a>
-            <a>Music</a>
-        </div>
-    </nav>
+            /* ================= NAVBAR ================= */
+            nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: var(--glass);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border-soft);
+                padding: 14px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-    <div class="main-container">
-        <div class="card">
+            .nav-logo {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: var(--primary);
+            }
 
-            <div class="header">
-                <div class="avatar">💕</div>
-                <div>
-                    <h1 class="dynamic-msg">Hey babe 🤍</h1>
-                    <p class="counter-msg"></p>
-                </div>
+            .nav-links {
+                display: flex;
+                gap: 25px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-soft);
+                font-weight: 500;
+            }
+
+            /* ================= LAYOUT ================= */
+            .main-container {
+                display: flex;
+                justify-content: center;
+                padding: 60px 20px;
+            }
+
+            .card {
+                width: min(1000px, 100%);
+                background: var(--bg-soft);
+                border-radius: 30px;
+                padding: 20px;
+                box-shadow:
+                    0 0 30px rgba(255, 122, 162, .15),
+                    0 30px 80px rgba(255, 122, 162, .1);
+            }
+
+            /* ================= HEADER ================= */
+            .header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .avatar {
+                min-width: 90px;
+                min-height: 90px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                50% {
+                    transform: scale(1.08);
+                }
+            }
+
+            /* ================= MESSAGE ================= */
+            .message-box {
+                margin-top: 30px;
+                padding: 22px;
+                border-radius: 20px;
+                background: linear-gradient(135deg, #ffeaf2, #ffffff);
+                border: 1px solid var(--border-soft);
+                line-height: 1.7;
+                position: relative;
+            }
+
+            .message-box::after {
+                content: "🤍 💕 🤍 💕";
+                position: absolute;
+                top: -14px;
+                right: 18px;
+            }
+
+            /* ================= TODAY MESSAGE ================= */
+            .today-message {
+                margin-top: 25px;
+                padding: 18px;
+                border-radius: 18px;
+                background: linear-gradient(135deg, #ffd1e1, #ffffff);
+                cursor: pointer;
+                box-shadow: 0 10px 30px rgba(255, 122, 162, .2);
+            }
+
+            .today-content {
+                margin-top: 12px;
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: .4s ease;
+            }
+
+            .today-content.show {
+                opacity: 1;
+                max-height: fit-content;
+            }
+
+            /* ================= SONG PANEL ================= */
+            .song-panel {
+                margin-top: 30px;
+                padding: 20px;
+                border-radius: 18px;
+                background: #ffeaf2;
+            }
+
+            .song-list {
+                height: 200px;
+                overflow-y: scroll;
+            }
+
+            .song-list button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border-radius: 12px;
+                border: none;
+                margin-bottom: 10px;
+                background: linear-gradient(135deg, #ffffff, #ffd1e1);
+                cursor: pointer;
+                font-weight: 500;
+            }
+
+            .song-list button.active {
+                background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
+                color: white;
+            }
+
+            /* ================= CHAT ================= */
+            .chatbox {
+                margin-top: 30px;
+                height: 600px;
+                background: linear-gradient(135deg, #ffd1e1, #ffffff);
+                border-radius: 20px;
+                border: 1px solid var(--border-soft);
+                padding: 12px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .chat-header {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .chat-messages {
+                flex: 1;
+                overflow-y: auto;
+                padding: 10px;
+                background: #ffffffcc;
+                border-radius: 14px;
+            }
+
+            .msg {
+                max-width: fit-content;
+                padding: 10px 18px;
+                margin-bottom: 10px;
+                border-radius: 14px;
+
+                font-size: .9rem;
+            }
+
+            .love-msg {
+                color: rgb(160, 31, 31);
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            .msg.left {
+                background: #ffffff;
+            }
+
+            .msg.right {
+                background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
+                margin-left: auto;
+            }
+
+            .msg .time {
+                display: block;
+                font-size: 10px;
+                color: #555;
+                text-align: right;
+                margin-top: 4px;
+            }
+
+            /* ================= INPUT ================= */
+            .chat-input {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .message-block {
+                display: flex;
+                gap: 8px;
+            }
+
+            .message-block textarea {
+                flex: 1;
+                padding: 10px 14px;
+                border-radius: 14px;
+                border: 1px solid var(--border-soft);
+            }
+
+            .message-block button {
+                padding: 10px 16px;
+                border-radius: 14px;
+                border: none;
+                background: linear-gradient(135deg, #ff7aa2, #ff9ebc);
+                color: white;
+                cursor: pointer;
+            }
+
+            /* ===== NAME INPUT ===== */
+            .chat-input #chatName {
+                width: 100%;
+                padding: 10px 14px;
+                border-radius: 14px;
+                border: 1px solid rgba(255, 122, 162, 0.3);
+                background: #fff0f6;
+                color: #4b2b36;
+                font-weight: 500;
+            }
+
+            .chat-input #chatName::placeholder {
+                color: #7a4a5a;
+            }
+
+            .chat-input #chatName:focus {
+                outline: none;
+                border-color: #ff7aa2;
+                background: #ffffff;
+            }
+
+            /* ================= FLOATING LOVE ================= */
+            .heart {
+                position: fixed;
+                bottom: -20px;
+                opacity: .7;
+                pointer-events: none;
+                animation: floatUp 8s linear infinite;
+            }
+
+
+
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-110vh);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <nav>
+            <div class="nav-logo">Unsaid 🤍</div>
+            <div class="nav-links">
+                <a>Home</a>
+                <a>Message</a>
+                <a>Music</a>
             </div>
+        </nav>
 
-            <div class="message-box">
-                <p>
-                    <!-- Today I love you even more than I did yesterday -->
+        <div class="main-container">
+            <div class="card">
 
-                    <!-- If I could put a star each time you crossed my mind, the cosmos would be jealous of the galaxy I'd -->
-                    <!-- made -->
-
-                    <!-- <p> <i>If I had to choose between breathing and loving you,
-                        <br>
-                        I'd use my last breath to tell you <br>
-                        <b class="love-msg">I love youuu</b>
-                    </i> </p> -->
-
-                    <!-- It may be impossible for people to be perfect... <br>
-                    But one thing is for sure: <br>
-                    You're perfect for me. -->
-
-                    <!-- <p>If someone asks about the most beautiful moment of my life</p>
-
-                <p>I will tell them about the day <b>I met you darling</b></p> -->
-
-                <p>I am yours. Don’t give myself back to me.</p>
-
-            </div>
-
-            <div class="today-message" onclick="toggleToday()">
-                <b>Today's message - <span class="today-date">1</span> </b>
-                <i>! It contains music bby</i> ❤️
-
-                <div class="today-content" id="todayText">
-                    <p>
-                        Today, I just want to open my heart to you completely.<br><br>
-
-                        I love you more than I can properly explain in words. And knowing that you love me too… that’s
-                        the most precious thing in my life. Nothing matters more to me than us.<br><br>
-
-                        Sometimes I get jealous. Sometimes I overthink. And I know that’s my weakness. It’s not because
-                        I don’t trust you — I do. It’s because I’m scared of losing you. The thought of you slowly
-                        drifting away from me is something my heart just can’t handle easily.<br><br>
-
-                        If my possessiveness ever makes you uncomfortable or hurts you, I’m truly sorry. I’m not proud
-                        of that side of me. I’m working on it, every single day, because you deserve a secure, confident
-                        man — not someone controlled by fear.<br><br>
-
-                        When you said friendship is very important to you, I understood it logically… but emotionally,
-                        it hurt me. That day, I felt small. I felt like I lost that day. Not you — just that moment. But
-                        I never stopped loving you.<br><br>
-
-                        I don’t want to control your world. I just want to be an important part of it. I want to feel
-                        chosen, valued, and secure in your heart.<br><br>
-
-                        I have one small favor — please let your friends, including your male friends, know that I am
-                        your boyfriend. Not because I want ownership, but because I’m proud of us. I want the world to
-                        know that you are mine and I am yours.<br><br>
-
-                        I love you deeply. I choose you every day. And I’m trying to become better for you, for us, and
-                        for the future we dream about together.<br><br>
-
-                        Always yours.
-                    </p>
-
-                </div>
-
-
-
-            </div>
-
-            <div class="song-panel">
-                <h3>Our little love songs 🎶</h3>
-                <div class="song-list">
-
-                    <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button> <button
-                        onclick="playSong('songs/2.mp3',this)">You’re my perfect</button> <button
-                        onclick="playSong('songs/3.mp3',this)">I found love</button> <button
-                        onclick="playSong('songs/4.mp3',this)">Tum hi ho</button> <button
-                        onclick="playSong('songs/5.mp3',this)">Loving you forever</button> <button
-                        onclick="playSong('songs/6.mp3',this)">Blue in the best way</button> <button
-                        onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button> <button
-                        onclick="playSong('songs/8.mp3',this)">A father’s love</button> <button
-                        onclick="playSong('songs/9.mp3',this)">Our love story</button>
-
-
-                </div>
-            </div>
-
-            <div class="chatbox">
-                <div class="chat-header">Chat 💬</div>
-                <div class="chat-messages" id="chatMessages"></div>
-
-                <div class="chat-input">
-                    <input type="text" id="chatName" placeholder="Your name 🤍">
-                    <div class="message-block">
-                        <textarea id="chatText" placeholder="Type your message"></textarea>
-                        <button onclick="sendMessage()">➤</button>
+                <div class="header">
+                    <div class="avatar">💕</div>
+                    <div>
+                        <h1 class="dynamic-msg">Hey babe 🤍</h1>
+                        <p class="counter-msg"></p>
                     </div>
                 </div>
+
+                <div class="message-box">
+                    <p>
+                        <!-- Today I love you even more than I did yesterday -->
+
+                        <!-- If I could put a star each time you crossed my mind, the cosmos would be jealous of the galaxy I'd -->
+                        <!-- made -->
+
+                        <!-- <p> <i>If I had to choose between breathing and loving you,
+                            <br>
+                            I'd use my last breath to tell you <br>
+                            <b class="love-msg">I love youuu</b>
+                        </i> </p> -->
+
+                        <!-- It may be impossible for people to be perfect... <br>
+                        But one thing is for sure: <br>
+                        You're perfect for me. -->
+
+                        <!-- <p>If someone asks about the most beautiful moment of my life</p>
+
+                    <p>I will tell them about the day <b>I met you darling</b></p> -->
+
+                    <p>I am yours. Don’t give myself back to me.</p>
+
+                </div>
+
+                <div class="today-message" onclick="toggleToday()">
+                    <b>Today's message - <span class="today-date">1</span> </b>
+                    <i>! It contains music bby</i> ❤️
+
+                    <div class="today-content" id="todayText">
+                        <p>
+                            Today, I just want to open my heart to you completely.<br><br>
+
+                            I love you more than I can properly explain in words. And knowing that you love me too… that’s
+                            the most precious thing in my life. Nothing matters more to me than us.<br><br>
+
+                            Sometimes I get jealous. Sometimes I overthink. And I know that’s my weakness. It’s not because
+                            I don’t trust you — I do. It’s because I’m scared of losing you. The thought of you slowly
+                            drifting away from me is something my heart just can’t handle easily.<br><br>
+
+                            If my possessiveness ever makes you uncomfortable or hurts you, I’m truly sorry. I’m not proud
+                            of that side of me. I’m working on it, every single day, because you deserve a secure, confident
+                            man — not someone controlled by fear.<br><br>
+
+                            When you said friendship is very important to you, I understood it logically… but emotionally,
+                            it hurt me. That day, I felt small. I felt like I lost that day. Not you — just that moment. But
+                            I never stopped loving you.<br><br>
+
+                            I don’t want to control your world. I just want to be an important part of it. I want to feel
+                            chosen, valued, and secure in your heart.<br><br>
+
+                            I have one small favor — please let your friends, including your male friends, know that I am
+                            your boyfriend. Not because I want ownership, but because I’m proud of us. I want the world to
+                            know that you are mine and I am yours.<br><br>
+
+                            I love you deeply. I choose you every day. And I’m trying to become better for you, for us, and
+                            for the future we dream about together.<br><br>
+
+                            Always yours.
+                        </p>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="song-panel">
+                    <h3>Our little love songs 🎶</h3>
+                    <div class="song-list">
+
+                        <button onclick="playSong('songs/1.mp3',this)">I’ve got my eyes on you</button> <button
+                            onclick="playSong('songs/2.mp3',this)">You’re my perfect</button> <button
+                            onclick="playSong('songs/3.mp3',this)">I found love</button> <button
+                            onclick="playSong('songs/4.mp3',this)">Tum hi ho</button> <button
+                            onclick="playSong('songs/5.mp3',this)">Loving you forever</button> <button
+                            onclick="playSong('songs/6.mp3',this)">Blue in the best way</button> <button
+                            onclick="playSong('songs/7.mp3',this)">Ordinary becomes magic</button> <button
+                            onclick="playSong('songs/8.mp3',this)">A father’s love</button> <button
+                            onclick="playSong('songs/9.mp3',this)">Our love story</button>
+
+
+                    </div>
+                </div>
+
+                <div class="chatbox">
+                    <div class="chat-header">Chat 💬</div>
+                    <div class="chat-messages" id="chatMessages"></div>
+
+                    <div class="chat-input">
+                        <input type="text" id="chatName" placeholder="Your name 🤍">
+                        <div class="message-block">
+                            <textarea id="chatText" placeholder="Type your message"></textarea>
+                            <button onclick="sendMessage()">➤</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-    <audio id="player"></audio>
+        <audio id="player"></audio>
 
-    <audio id="todayPlayer" preload="auto">
-        <source src="songs/get.mp3" type="audio/mpeg">
-    </audio>
+        <audio id="todayPlayer" preload="auto">
+            <source src="songs/get.mp3" type="audio/mpeg">
+        </audio>
 
-    <script>
-        function createHeart() {
-            const h = document.createElement("div");
-            h.className = "heart";
-            h.innerText = ["🤍", "💕", "💗", "🫶"][Math.floor(Math.random() * 4)];
-            h.style.left = Math.random() * 100 + "vw";
-            h.style.fontSize = 16 + Math.random() * 14 + "px";
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 8000);
-        }
-        setInterval(createHeart, 600);
-
-        const todayPlayer = document.getElementById("todayPlayer");
-        let todaySongPlayed = false;
-
-        function toggleToday() {
-            const content = document.getElementById("todayText");
-            content.classList.toggle("show");
-
-            // Play today's special song only once
-            if (content.classList.contains("show") && !todaySongPlayed) {
-                todayPlayer.currentTime = 0;
-                todayPlayer.play();
-                todaySongPlayed = true;
+        <script>
+            function createHeart() {
+                const h = document.createElement("div");
+                h.className = "heart";
+                h.innerText = ["🤍", "💕", "💗", "🫶"][Math.floor(Math.random() * 4)];
+                h.style.left = Math.random() * 100 + "vw";
+                h.style.fontSize = 16 + Math.random() * 14 + "px";
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 8000);
             }
-        }
+            setInterval(createHeart, 600);
 
-        const player = document.getElementById("player");
-        let currentBtn = null;
+            const todayPlayer = document.getElementById("todayPlayer");
+            let todaySongPlayed = false;
 
-        function playSong(src, btn) {
-            if (currentBtn) currentBtn.classList.remove("active");
-            btn.classList.add("active");
-            currentBtn = btn;
-            player.src = src;
+            function toggleToday() {
+                const content = document.getElementById("todayText");
+                content.classList.toggle("show");
 
-            player.play();
-        }
-    </script>
+                // Play today's special song only once
+                if (content.classList.contains("show") && !todaySongPlayed) {
+                    todayPlayer.currentTime = 0;
+                    todayPlayer.play();
+                    todaySongPlayed = true;
+                }
+            }
 
-    <!-- ================= FIREBASE (UNCHANGED) ================= -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import {
-            getFirestore, collection, addDoc,
-            onSnapshot, query, orderBy, deleteDoc, doc
-        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+            const player = document.getElementById("player");
+            let currentBtn = null;
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
-            authDomain: "unsaid-3.firebaseapp.com",
-            projectId: "unsaid-3",
-        };
+            function playSong(src, btn) {
+                if (currentBtn) currentBtn.classList.remove("active");
+                btn.classList.add("active");
+                currentBtn = btn;
+                player.src = src;
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+                player.play();
+            }
+        </script>
 
-        const chatMessages = document.getElementById("chatMessages");
+       <!-- FIREBASE CHAT -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+getFirestore, collection, addDoc,
+onSnapshot, query, orderBy,
+deleteDoc, doc, updateDoc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        let userId = localStorage.getItem("uid");
-        if (!userId) {
-            userId = Math.random().toString(36).slice(2);
-            localStorage.setItem("uid", userId);
-        }
+const firebaseConfig={
+apiKey:"AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
+authDomain:"unsaid-3.firebaseapp.com",
+projectId:"unsaid-3",
+};
 
-        function formatTime(ts) {
-            const d = new Date(ts);
-            return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        }
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
 
-        const q = query(collection(db, "chat"), orderBy("time"));
-        onSnapshot(q, snap => {
-            chatMessages.innerHTML = "";
-            snap.forEach(d => {
-                const m = d.data();
-                const side = m.uid === userId ? "right" : "left";
-                chatMessages.innerHTML += `
-                <div class="msg ${side}">
-                    <b>${m.name || "Anonymous"}</b><br>
-                    ${m.text}
-                    <span class="time">${formatTime(m.time)}</span>
-                    ${m.uid === userId ? `<span onclick="delMsg('${d.id}')">delete</span>` : ""}
-                </div>`;
-            });
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
+let userId=localStorage.getItem("uid");
+if(!userId){
+userId=Math.random().toString(36).slice(2);
+localStorage.setItem("uid",userId);
+}
 
-        window.sendMessage = async () => {
-            const name = chatName.value.trim() || "Anonymous 🤍";
-            const text = chatText.value.trim();
-            if (!text) return;
+const chatMessages=document.getElementById("chatMessages");
 
-            await addDoc(collection(db, "chat"), {
-                name,
-                text,
-                uid: userId,
-                time: Date.now()
-            });
+function formatDate(ts){
+const d=new Date(ts);
+return d.toLocaleString("en-IN",{
+day:"2-digit",month:"short",
+hour:"2-digit",minute:"2-digit"
+});
+}
 
-            chatText.value = "";
-        };
+const q=query(collection(db,"chat"),orderBy("time"));
 
-        window.delMsg = async (id) => {
-            await deleteDoc(doc(db, "chat", id));
-        };
-    </script>
-    <script>
-        const msgElement = document.querySelector(".dynamic-msg");
+onSnapshot(q,snap=>{
+chatMessages.innerHTML="";
+snap.forEach(async d=>{
+const m=d.data();
+const side=m.uid===userId?"right":"left";
 
-        const hour = new Date().getHours();
-        let message = "";
+if(m.uid!==userId && !m.seen){
+await updateDoc(doc(db,"chat",d.id),{seen:true});
+}
 
-        if (hour >= 5 && hour < 12) {
-            message = "Good morning my love 🤍";
-        } else if (hour >= 12 && hour < 17) {
-            message = "Good Afternoon Babe";
-        } else if (hour >= 17 && hour < 21) {
-            message = "Good evening my heart 💕 Thinking of you makes my day better.";
-        } else {
-            message = "Good Night Babe";
-        }
+chatMessages.innerHTML+=`
+<div class="msg ${side}">
+<b>${m.name||"Anonymous 🤍"}</b><br>
+${m.text}
+<span class="time">${formatDate(m.time)}</span>
+${side==="right"?`<div class="status">${m.seen?"✔✔":"✔"}</div>
+<span style="font-size:10px;color:red;cursor:pointer"
+onclick="delMsg('${d.id}')">delete</span>`:""}
+</div>`;
+});
+chatMessages.scrollTop=chatMessages.scrollHeight;
+});
 
-        msgElement.textContent = message;
+window.sendMessage=async()=>{
+const name=chatName.value.trim()||"Anonymous 🤍";
+const text=chatText.value.trim();
+if(!text) return;
+
+await addDoc(collection(db,"chat"),{
+name,text,uid:userId,
+time:Date.now(),seen:false
+});
+chatText.value="";
+};
+
+window.delMsg=async(id)=>{
+await deleteDoc(doc(db,"chat",id));
+};
+</script>
+        <script>
+            const msgElement = document.querySelector(".dynamic-msg");
+
+            const hour = new Date().getHours();
+            let message = "";
+
+            if (hour >= 5 && hour < 12) {
+                message = "Good morning my love 🤍";
+            } else if (hour >= 12 && hour < 17) {
+                message = "Good Afternoon Babe";
+            } else if (hour >= 17 && hour < 21) {
+                message = "Good evening my heart 💕 Thinking of you makes my day better.";
+            } else {
+                message = "Good Night Babe";
+            }
+
+            msgElement.textContent = message;
 
 
 
 
-    </script>
+        </script>
 
-    <script>
-        const counterElement = document.querySelector(".counter-msg");
+        <script>
+            const counterElement = document.querySelector(".counter-msg");
 
-        // Relationship start date (29 Jan 2026)
-        const startDate = new Date("2026-01-29T00:00:00");
-        const todayDate = document.querySelector(".today-date");
-        const now = new Date();
-        const day = now.getDate();
-        const month = now.toLocaleString('en-US', { month: 'long' });
-        const dateString = `${day} ${month}`;
-        console.log(dateString);
-
-        todayDate.innerText = dateString;
-
-        function updateCounter() {
+            // Relationship start date (29 Jan 2026)
+            const startDate = new Date("2026-01-29T00:00:00");
+            const todayDate = document.querySelector(".today-date");
             const now = new Date();
+            const day = now.getDate();
+            const month = now.toLocaleString('en-US', { month: 'long' });
+            const dateString = `${day} ${month}`;
+            console.log(dateString);
 
-            const diff = now - startDate;
+            todayDate.innerText = dateString;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+            function updateCounter() {
+                const now = new Date();
 
-            counterElement.textContent =
-                `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds together ❤️`;
-        }
+                const diff = now - startDate;
 
-        updateCounter(); // initial call
-        setInterval(updateCounter, 1000);
-    </script>
-</body>
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
 
-</html>
+                counterElement.textContent =
+                    `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds together ❤️`;
+            }
+
+            updateCounter(); // initial call
+            setInterval(updateCounter, 1000);
+        </script>
+    </body>
+
+    </html>
