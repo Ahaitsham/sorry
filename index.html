@@ -283,6 +283,184 @@
             background: #ffffff;
         }
 
+        .ily-msg {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+
+            /* Cute gradient text */
+            background: linear-gradient(90deg, #ff4d6d, #ff99c8, #ff4d6d);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            /* Animations */
+            animation: shimmer 4s linear infinite,
+                heartbeat 4s ease-in-out infinite,
+                glow 2s ease-in-out infinite alternate;
+
+            transition: transform 0.4s ease, letter-spacing 0.4s ease;
+        }
+
+
+        #loveGate {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .love-box {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            width: min(600px, 90%);
+            box-shadow: 0 20px 60px rgba(255, 122, 162, 0.3);
+            animation: popIn 0.6s ease;
+        }
+
+        .love-box h2 {
+            color: #ff4d6d;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .question button {
+            padding: 12px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffd1e1, #ff9ebc);
+            transition: 0.3s;
+        }
+
+        .question button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Cute floating hearts */
+        .ily-msg::before {
+            content: "💖 💕 💘 💞 💓";
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            animation: floatHearts 6s linear infinite;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* Hover surprise */
+        .ily-msg:hover {
+            transform: scale(1.15) rotate(-2deg);
+            letter-spacing: 10px;
+        }
+
+        /* Shimmer animation */
+        @keyframes shimmer {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        /* Heartbeat + breathing */
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.08);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Glow effect */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff4d6d,
+                    0 0 20px #ff99c8,
+                    0 0 40px #ff4d6d;
+            }
+
+            100% {
+                text-shadow: 0 0 20px #ff99c8,
+                    0 0 40px #ff4d6d,
+                    0 0 60px #ff99c8;
+            }
+        }
+
+        /* Floating hearts animation */
+        @keyframes floatHearts {
+            0% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(-120px);
+                opacity: 0;
+            }
+        }
+
+
+
         /* ================= FLOATING LOVE ================= */
         .heart {
             position: fixed;
@@ -291,6 +469,7 @@
             pointer-events: none;
             animation: floatUp 8s linear infinite;
         }
+
 
 
 
@@ -345,29 +524,7 @@
 
                     <p>I will tell them about the day <b>I met you darling</b></p> -->
 
-                    <!-- <p>I am yours. Don’t give myself back to me.</p> -->
-
-                    <!-- <p>I'll kiss every inch of you, but my tongue has a favourite spot and you'll know exactly where.</p> -->
-                    <!-- <p>
-                    Hey love<br><br>
-
-                    Travel safe, okay?
-                    I’m already imagining the moment you get back…
-                    me pulling you close and whispering how much I missed you all day. 😉<br><br>
-
-                    Come fast… someone here is thinking about you a little too much. 🤍
-                </p> -->
-
-                    <!-- Sometimes I just look at you and think…
-                    how did I get so lucky? <br>
-
-                    Out of everyone in the world,
-                    I got you — <br>
-                    and that’s my favorite thing about life. ❤️ -->
-
-                    <p>What will I lose if I have you ?</p>
-                    <p>What will I have If I lose you ?</p>
-
+                <p>I am yours. Don’t give myself back to me.</p>
 
             </div>
 
@@ -377,74 +534,73 @@
 
                 <div class="today-content" id="todayText">
                     <p>
-                        <!-- Today, I just want to open my heart to you completely.<br><br>
 
-                            I love you more than I can properly explain in words. And knowing that you love me too… that’s
-                            the most precious thing in my life. Nothing matters more to me than us.<br><br>
+                        <!-- <p>
 
-                            Sometimes I get jealous. Sometimes I overthink. And I know that’s my weakness. It’s not because
-                            I don’t trust you — I do. It’s because I’m scared of losing you. The thought of you slowly
-                            drifting away from me is something my heart just can’t handle easily.<br><br>
 
-                            If my possessiveness ever makes you uncomfortable or hurts you, I’m truly sorry. I’m not proud
-                            of that side of me. I’m working on it, every single day, because you deserve a secure, confident
-                            man — not someone controlled by fear.<br><br>
+                        Tere Liye Ghar Banaun
+                        Deewarein Neele Rang Se Sajaun
+                        Pasand Hai Tumhein Maloom Hai
+                        Tumne Bataya Tha Ik Dafe
+                    </p><br>
 
-                            When you said friendship is very important to you, I understood it logically… but emotionally,
-                            it hurt me. That day, I felt small. I felt like I lost that day. Not you — just that moment. But
-                            I never stopped loving you.<br><br>
+                    <p>
+                        Neele Ful Laun Tere Liye
+                        Khat Likhu Tere Liye
+                        Main Khuda Mei Maanun Nahi
+                        Par Maangun Dua Tere Liye
+                    </p><br>
 
-                            I don’t want to control your world. I just want to be an important part of it. I want to feel
-                            chosen, valued, and secure in your heart.<br><br>
+                    <p>
+                        Teri Baatein Naasamajh Si
+                        Fir Bhi Jaayaz Lag Rahi Hai
+                        Tu Pareshaan Kar Rahi Hai
+                        Fir Bhi Masoom Lag Rahi Hai
+                    </p>
+                    <br>
 
-                            I have one small favor — please let your friends, including your male friends, know that I am
-                            your boyfriend. Not because I want ownership, but because I’m proud of us. I want the world to
-                            know that you are mine and I am yours.<br><br>
+                    <p>
 
-                            I love you deeply. I choose you every day. And I’m trying to become better for you, for us, and
-                            for the future we dream about together.<br><br>
+                        Tere Liye Mandir Jaaun
+                        Tere Naam Ka Diya Jalaun
+                        Hansta Rahe Tu Chahe Jo Ho
+                        Teri Hansi Ko Nazar Na Lage
+                    </p> <br>
 
-                            Always yours.
-                        </p> -->
+                    <p>
 
-                        <!-- <br><br>
+                        Kagaz Ke Phool Laun Tere Liye
+                        Khat Likhu Tere Liye
+                        Mai Khuda Mein Maanun Nahi
+                        Par Maangun Dua Tere Liye
+                    </p><br>
 
-                        I keep thinking about you while you're on your way back from college.
-                        Just imagining the moment I finally see you again… pulling you a little closer,
-                        feeling your warmth, and stealing a slow kiss that makes you forget the whole day.<br><br>
+                    <p>
 
-                        You have no idea how much I crave you sometimes — your smile, your voice,
-                        the way you look at me. It drives me a little crazy in the best way.<br><br>
+                        Tere Liye Hum Bane Hai
+                        Tere Liye Badal Rahe Hai
+                        Kya Mohabbat Ho Gayi Hai
+                        Teri Hi Teri Baatein Kare
+                    </p> <br>
 
-                        Come back safely… because the moment you’re with me again,
-                        I’m not letting you go so easily. 😉🤍 -->
+                    <p>
+                        Tere Liye Ghar Banaun
+                        Deewarein Neele Rang Se Sajaun
+                        Pasand Hai Tumhein Maloom Hai
+                        Tumne Bataya Tha Ek Dafa
+                    </p> <br>
 
-                    <!-- <p>
-                        I don’t think you realize how special you are to me.<br><br>
-
-                        It’s not just about love… it’s about the way you’ve quietly become part of my everyday
-                        happiness.<br>
-                        The way a simple message from you can change my whole mood,<br>
-                        the way your smile stays in my mind longer than anything else in the day.<br><br>
-
-                        Loving you doesn’t feel complicated or forced.<br>
-                        It feels natural… like you were always meant to be part of my life.<br><br>
-
-                        And honestly, I don’t need anything fancy or perfect.<br>
-                        As long as I have you, your laugh, your voice,<br>
-                        and those little moments we share… that’s already more than enough for me.<br><br>
-
-                        You’re not just someone I love.<br>
-                        You’re someone I choose, every single day. ❤️
+                    <p>
+                        Dekh Shayar Bana Tere Liye
+                        Naghma Likha Tere Liye
+                        Main Khuda Mein Maanun Kyu
+                        Tu Khuda Mere Liye
                     </p> -->
 
+                        <b class="ily-msg">I LOVE YOU</b>
 
-                    <p>When I die,</p>
-                    <p>Put a picture of you</p>
-                    <p>in my pocket so that</p>
-                    <p>I can show everyone</p>
-                    <p>in heaven, What is more</p>
-                    <p>beautiful than it.</p>
+
+                    </p>
 
                 </div>
 
@@ -486,11 +642,51 @@
         </div>
     </div>
 
+    <!-- LOVE VERIFICATION POPUP -->
+    <div id="loveGate">
+        <div class="love-box">
+            <h2>⚠ Website Deleted</h2>
+            <p>
+                This website has been permanently deleted by its owner.
+            </p>
+            <p>Sorry, this website is not available.</p>
+            <p style="margin-top:15px;"><b>Only his girlfriend can access this website.</b></p>
+
+            <div class="question" id="mcqSection">
+                <p>How much does his boyfriend love her? 🤍</p>
+
+                <button onclick="wrongAnswer()">a) 10%</button>
+                <button onclick="wrongAnswer()">b) 50%</button>
+                <button onclick="wrongAnswer()">c) 100%</button>
+                <button onclick="showInputQuestion()">d) His love cannot be compared, he loves me more than anyone can
+                    do.</button>
+            </div>
+
+            <div class="question" id="inputSection" style="display:none;">
+                <p>Now tell me something only his girlfriend knows 😌</p>
+                <p><b>Question:</b> What is the date we started our relationship? (Format: YYYY-MM-DD)</p>
+
+                <input type="text" id="loveAnswer" placeholder="Type your answer here 🤍"
+                    style="padding:10px;border-radius:12px;border:1px solid #ff9ebc;width:100%;margin-top:10px;">
+
+                <button onclick="checkInputAnswer()" style="margin-top:12px;">
+                    Submit 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
+
     <audio id="player"></audio>
 
     <audio id="todayPlayer" preload="auto">
         <source src="songs/get.mp3" type="audio/mpeg">
     </audio>
+
+    <audio id="loveRevealSong" preload="auto">
+        <source src="songs/2.mp3" type="audio/mpeg">
+    </audio>
+
 
     <script>
         function createHeart() {
@@ -504,32 +700,8 @@
         }
         setInterval(createHeart, 600);
 
-        const todayPlayer = document.getElementById("todayPlayer");
-        let todaySongPlayed = false;
 
-        function toggleToday() {
-            const content = document.getElementById("todayText");
-            content.classList.toggle("show");
 
-            // Play today's special song only once
-            if (content.classList.contains("show") && !todaySongPlayed) {
-                todayPlayer.currentTime = 0;
-                todayPlayer.play();
-                todaySongPlayed = true;
-            }
-        }
-
-        const player = document.getElementById("player");
-        let currentBtn = null;
-
-        function playSong(src, btn) {
-            if (currentBtn) currentBtn.classList.remove("active");
-            btn.classList.add("active");
-            currentBtn = btn;
-            player.src = src;
-
-            player.play();
-        }
     </script>
 
     <!-- FIREBASE CHAT -->
@@ -661,6 +833,93 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         updateCounter(); // initial call
         setInterval(updateCounter, 1000);
     </script>
+
+
+
+
+
+    <script>
+        const gate = document.getElementById("loveGate");
+        const revealSong = document.getElementById("loveRevealSong");
+        const todayPlayer = document.getElementById("todayPlayer");
+        const player = document.getElementById("player");
+
+        let currentBtn = null;
+        const correctSecretAnswer = "2026-01-29";
+        
+        // STOP EVERYTHING
+        function stopAllSongs() {
+            document.querySelectorAll("audio").forEach(a => {
+                a.pause();
+                a.currentTime = 0;
+            });
+        }
+
+        function showInputQuestion() {
+            document.getElementById("mcqSection").style.display = "none";
+            document.getElementById("inputSection").style.display = "block";
+        }
+
+        function checkInputAnswer() {
+            const userInput = document.getElementById("loveAnswer").value.trim();
+            const correctDate = new Date("2026-01-29").getTime();
+            const enteredDate = new Date(userInput).getTime();
+
+            if (!isNaN(enteredDate) && enteredDate === correctDate) {
+                unlockWebsite();
+            } else {
+                alert("Wrong answer baby 😏 Try again.");
+            }
+        }
+
+        function unlockWebsite() {
+            stopAllSongs();
+            revealSong.play();
+
+            gate.style.transition = "opacity 1s ease";
+            gate.style.opacity = "0";
+
+            setTimeout(() => {
+                gate.remove();
+            }, 1000);
+        }
+
+        function wrongAnswer() {
+            document.body.innerHTML = `
+        <div style="height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;background:#fff0f6;font-family:Poppins;padding:20px;">
+            <div>
+                <h2 style="color:#ff4d6d;">Access Denied 💔</h2>
+                <p>Only his girlfriend knows the right answer 🤍</p>
+            </div>
+        </div>
+        `;
+        }
+
+        function toggleToday() {
+            const content = document.getElementById("todayText");
+            content.classList.toggle("show");
+
+            if (content.classList.contains("show")) {
+                stopAllSongs();
+                todayPlayer.play();
+            }
+        }
+
+        function playSong(src, btn) {
+            if (currentBtn) currentBtn.classList.remove("active");
+
+            stopAllSongs(); // THIS is what was missing properly
+
+            btn.classList.add("active");
+            currentBtn = btn;
+
+            player.src = src;
+            player.play();
+        }
+    </script>
+
+
+
 </body>
 
 </html>
