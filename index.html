@@ -459,6 +459,42 @@
             }
         }
 
+        /* ================= PREVIOUS MESSAGES ================= */
+
+        .previous-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 20px;
+            background: #fff3f8;
+            border: 1px solid var(--border-soft);
+        }
+
+        .previous-title {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .previous-message {
+            padding: 14px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ffffff, #ffd1e1);
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .prev-content {
+            margin-top: 10px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: .4s ease;
+        }
+
+        .prev-content.show {
+            opacity: 1;
+            max-height: fit-content;
+        }
+
 
 
         /* ================= FLOATING LOVE ================= */
@@ -524,8 +560,14 @@
 
                     <p>I will tell them about the day <b>I met you darling</b></p> -->
 
-                <p>I am yours. Don’t give myself back to me.</p>
+                <p>When I die,</p>
+                <p>put a picture of her</p>
+                <p>in my pocket so, that</p>
+                <p>I can show everyone</p>
+                <p>in heaven, what is more</p>
+                <p>beautiful than it.</p>
 
+                
             </div>
 
             <div class="today-message" onclick="toggleToday()">
@@ -597,7 +639,53 @@
                         Tu Khuda Mere Liye
                     </p> -->
 
-                        <b class="ily-msg">I LOVE YOU</b>
+                        <!-- <b class="ily-msg">I LOVE YOU</b> -->
+
+                        <!-- <p>When I die,</p>
+                        <p>put a picture of her</p>
+                        <p>in my pocket so, that</p>
+                        <p>I can show everyone</p>
+                        <p>in heaven, what is more</p>
+                        <p>beautiful than it.</p> -->
+
+
+                    <p class="love-msg">
+
+                        My love,<br><br>
+
+                        I don’t know where you are right now or what you’re going through, but I just want you to know
+                        one thing — I am still here.<br><br>
+
+                        No matter what happens, my feelings for you haven’t changed. I’m not angry, I’m not giving up,
+                        and I’m not going anywhere.<br><br>
+
+                        All I want is your support… your hand in mine. That’s all I have ever wanted.<br><br>
+
+                        I tried calling your parents because I wanted to respectfully explain things and convince them
+                        that my intentions with you are genuine, but the call ended before I could speak.<br><br>
+
+                        Still, I understand that everyone is emotional right now, and I truly believe that with time
+                        everything will calm down.<br><br>
+
+                        On our website, the timer that counts the days of our relationship will keep running.<br>
+                        It will never stop… because in my heart we are not breaking up.<br>
+                        This is just a difficult moment in our story, not the end of it.<br><br>
+
+                        I will keep leaving messages here for you, patiently.<br>
+                        Not to pressure you, but so that whenever you see them, you know I never stopped loving
+                        you.<br><br>
+
+                        Wherever you are right now, please stay calm and take care of yourself, baby.<br>
+                        Everything will settle with time, I truly believe that.<br><br>
+
+                        And wherever life takes us… one day I will come to you again.<br><br>
+
+                        I am not leaving you. Ever.<br><br>
+
+                        Always yours,<br>
+                        Ahtsham
+
+                    </p>
 
 
                     </p>
@@ -605,6 +693,50 @@
                 </div>
 
 
+
+            </div>
+
+            <div class="previous-section">
+
+                <h3 class="previous-title">Our Previous Messages 🤍</h3>
+
+                <div class="previous-message" onclick="togglePrev(this)">
+                    <b>7th March 🤍</b>
+
+                    <div class="prev-content">
+                        <p>
+                            I don’t think you realize how special you are to me.<br><br>
+
+                            It’s not just about love… it’s about the way you’ve quietly become part of my everyday
+                            happiness.<br>
+                            The way a simple message from you can change my whole mood,<br>
+                            the way your smile stays in my mind longer than anything else in the day.<br><br>
+
+                            Loving you doesn’t feel complicated or forced.<br>
+                            It feels natural… like you were always meant to be part of my life.<br><br>
+
+                            And honestly, I don’t need anything fancy or perfect.<br>
+                            As long as I have you, your laugh, your voice,<br>
+                            and those little moments we share… that’s already more than enough for me.<br><br>
+
+                            You’re not just someone I love.<br>
+                            You’re someone I choose, every single day. ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <div class="previous-message" onclick="togglePrev(this)">
+                    <b>6th March</b>
+
+                    <div class="prev-content">
+                        Whatever happens in life,<br>
+                        I want you to remember one thing.<br><br>
+
+                        I’m always going to stand beside you.<br>
+                        Not because things are easy,<br>
+                        but because it’s you. 🤍
+                    </div>
+                </div>
 
             </div>
 
@@ -846,7 +978,7 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
 
         let currentBtn = null;
         const correctSecretAnswer = "2026-01-29";
-        
+
         // STOP EVERYTHING
         function stopAllSongs() {
             document.querySelectorAll("audio").forEach(a => {
@@ -915,6 +1047,13 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
 
             player.src = src;
             player.play();
+        }
+    </script>
+
+    <script>
+        function togglePrev(el) {
+            const content = el.querySelector(".prev-content");
+            content.classList.toggle("show");
         }
     </script>
 
