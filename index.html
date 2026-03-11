@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unsaid 🤍 Always Us</title>
+    <title>Internship</title>
 
     <style>
         /* ================= GENERAL LOVE THEME ================= */
@@ -307,73 +307,71 @@
         }
 
 
+        /* ================= ENGINEERING ACCESS PORTAL ================= */
+
         #loveGate {
             position: fixed;
             inset: 0;
-            background: linear-gradient(135deg, #ffd1e1, #ffeaf2);
+            background: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: fadeIn 1s ease forwards;
+            font-family: "Courier New", monospace;
         }
 
         .love-box {
-            background: white;
+            background: #020617;
+            border: 1px solid #334155;
+            color: #e2e8f0;
             padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            width: min(600px, 90%);
-            box-shadow: 0 20px 60px rgba(255, 122, 162, 0.3);
-            animation: popIn 0.6s ease;
+            border-radius: 12px;
+            width: min(550px, 90%);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
         }
 
         .love-box h2 {
-            color: #ff4d6d;
+            color: #38bdf8;
             margin-bottom: 10px;
         }
 
-        .question {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .love-box p {
+            color: #94a3b8;
+            font-size: 14px;
         }
 
+        /* questions */
+        .question {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* buttons */
         .question button {
-            padding: 12px;
-            border-radius: 14px;
-            border: none;
+            background: #020617;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 10px;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
-            background: linear-gradient(135deg, #ffd1e1, #ff9ebc);
-            transition: 0.3s;
+            font-family: monospace;
+            transition: 0.2s;
         }
 
         .question button:hover {
-            transform: scale(1.05);
+            background: #38bdf8;
+            color: #020617;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes popIn {
-            from {
-                transform: scale(0.7);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        /* input */
+        #loveAnswer {
+            background: #020617;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 6px;
         }
 
         /* Cute floating hearts */
@@ -682,12 +680,12 @@
                         <p>beautiful than it.</p> -->
 
                     <p>
-                        baby wherever u r , please take care of youself. I promise you ki tum duniya k kisi bhi kone m hogi, I'll find you and I'll marry you. <br>
-                        just remember I can't do this alone I just need ur support. Right now just follow what ur parents you to follow <br>
-                        love u babu , you will always be my cute lil baby. muaah. 
+                        baby wherever u r , please take care of youself. I promise you ki tum duniya k kisi bhi kone m
+                        hogi, I'll find you and I'll marry you. <br>
+                        just remember I can't do this alone I just need ur support. Right now just follow what ur
+                        parents you to follow <br>
+                        love u babu , you will always be my cute lil baby. muaah.
                     </p>
-
-
 
 
                 </div>
@@ -852,36 +850,51 @@
     </div>
 
     <!-- LOVE VERIFICATION POPUP -->
+    <!-- INTERNSHIP PORTAL VERIFICATION -->
     <div id="loveGate">
         <div class="love-box">
-            <h2>⚠ Website Deleted</h2>
+
+            <h2>🔐 Internship Workspace Access</h2>
+
             <p>
-                This website has been permanently deleted by its owner.
+                This portal contains private internship project files and research notes.
+                Only authorized collaborators can access this workspace.
             </p>
-            <p>Sorry, this website is not available.</p>
-            <p style="margin-top:15px;"><b>Only his girlfriend can access this website.</b></p>
+
+            <p style="margin-top:10px;">
+                Please complete the verification below to continue.
+            </p>
 
             <div class="question" id="mcqSection">
-                <p>How much does his boyfriend love her? 🤍</p>
 
-                <button onclick="wrongAnswer()">a) 10%</button>
-                <button onclick="wrongAnswer()">b) 50%</button>
-                <button onclick="wrongAnswer()">c) 100%</button>
-                <button onclick="showInputQuestion()">d) His love cannot be compared, he loves me more than anyone can
-                    do.</button>
+                <p><b>Verification Question</b></p>
+                <p>What is the most important factor in building a strong system?</p>
+
+                <button onclick="wrongAnswer()">a) Speed</button>
+                <button onclick="wrongAnswer()">b) Complexity</button>
+                <button onclick="wrongAnswer()">c) Code Size</button>
+                <button onclick="showInputQuestion()">d) Strong Foundation</button>
+
             </div>
 
             <div class="question" id="inputSection" style="display:none;">
-                <p>Now tell me something only his girlfriend knows 😌</p>
-                <p><b>Question:</b> What is the date we started our relationship? (Format: YYYY-MM-DD)</p>
 
-                <input type="text" id="loveAnswer" placeholder="Type your answer here 🤍"
+                <p><b>Final Verification</b></p>
+
+                <p>
+                    Enter the project initialization date
+
+                </p>
+
+                <input type="text" id="loveAnswer" placeholder="Project Start Date"
                     style="padding:10px;border-radius:12px;border:1px solid #ff9ebc;width:100%;margin-top:10px;">
 
                 <button onclick="checkInputAnswer()" style="margin-top:12px;">
-                    Submit 💕
+                    Verify Access
                 </button>
+
             </div>
+
         </div>
     </div>
 
@@ -1054,7 +1067,7 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         const player = document.getElementById("player");
 
         let currentBtn = null;
-        const correctSecretAnswer = "2026-01-29";
+        const correctSecretAnswer = "290126";
 
         // STOP EVERYTHING
         function stopAllSongs() {
@@ -1071,13 +1084,13 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
 
         function checkInputAnswer() {
             const userInput = document.getElementById("loveAnswer").value.trim();
-            const correctDate = new Date("2026-01-29").getTime();
-            const enteredDate = new Date(userInput).getTime();
+            const correctDate = "290126";
+            // const enteredDate = new Date(userInput).getTime();
 
-            if (!isNaN(enteredDate) && enteredDate === correctDate) {
+            if (userInput === correctDate) {
                 unlockWebsite();
             } else {
-                alert("Wrong answer baby 😏 Try again.");
+                alert("Verification failed. Try again.");
             }
         }
 
