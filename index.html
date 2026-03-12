@@ -852,7 +852,7 @@
                         onclick="playSong('songs/71.mp3',this)">Ordinary becomes magic</button> <button
                         onclick="playSong('songs/81.mp3',this)">A father’s love</button> <button
                         onclick="playSong('songs/91.mp3',this)">Our love story</button>
-2
+                    2
 
                 </div>
             </div>
@@ -910,12 +910,15 @@
 
                 </p>
 
-                <input type="password" id="loveAnswer" placeholder="Project Start Date" autocomplete="off" autocorrect="off" 
+                <input type="password" id="loveAnswer" placeholder="Project Start Date" autocomplete="off"
+                    autocorrect="off"
                     style="padding:10px;border-radius:12px;border:1px solid #ff9ebc;width:100%;margin-top:10px;">
 
                 <button onclick="checkInputAnswer()" style="margin-top:12px;">
                     Verify Access
                 </button>
+
+                <button class="showPassword">Show Password</button>
 
             </div>
 
@@ -1101,6 +1104,22 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
             });
         }
 
+        const inputType = document.getElementById("loveAnswer");
+        const passwordReveal = document.querySelector(".showPassword");
+        // const enteredDate = new Date(userInput).getTime();
+
+        passwordReveal.addEventListener('click', () => {
+            if(inputType.type === 'password'){
+                inputType.type = 'text';
+                passwordReveal.textContent = 'hide password'
+            }else{
+                inputType.type='password';
+                passwordReveal.textContent = 'Show password' ;
+            }
+            // alert("hello click is working")
+        })
+
+
         function showInputQuestion() {
             document.getElementById("mcqSection").style.display = "none";
             document.getElementById("inputSection").style.display = "block";
@@ -1109,7 +1128,6 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         function checkInputAnswer() {
             const userInput = document.getElementById("loveAnswer").value.trim();
             const correctDate = "191105";
-            // const enteredDate = new Date(userInput).getTime();
 
             if (userInput === correctDate) {
                 unlockWebsite();
