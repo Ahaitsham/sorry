@@ -30,6 +30,7 @@
             font-family: "Poppins", system-ui;
             color: var(--text-main);
             min-height: 100vh;
+            visibility: h;
             overflow-x: hidden;
         }
 
@@ -517,6 +518,7 @@
 
 <body>
 
+
     <nav>
         <div class="nav-logo">Unsaid 🤍</div>
         <div class="nav-links">
@@ -852,7 +854,7 @@
                         onclick="playSong('songs/71.mp3',this)">Ordinary becomes magic</button> <button
                         onclick="playSong('songs/81.mp3',this)">A father’s love</button> <button
                         onclick="playSong('songs/91.mp3',this)">Our love story</button>
-                    2
+                    
 
                 </div>
             </div>
@@ -962,6 +964,13 @@
             deleteDoc, doc, updateDoc
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+        import {
+            getAuth,
+            signInAnonymously,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
         // const firebaseConfig = {
         //     apiKey: "AIzaSyCVekKpGqp9qg-3Np6zA-G2tVxdRxdXqM8",
         //     authDomain: "unsaid-3.firebaseapp.com",
@@ -975,6 +984,18 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+                startChat();
+            }
+
+        });
+        window.auth = auth;
+        window.signInAnonymously = signInAnonymously;
 
         let userId = localStorage.getItem("uid");
         if (!userId) {
@@ -992,19 +1013,23 @@
             });
         }
 
-        const q = query(collection(db, "chat"), orderBy("time"));
+        function startChat() {
 
-        onSnapshot(q, snap => {
-            chatMessages.innerHTML = "";
-            snap.forEach(async d => {
-                const m = d.data();
-                const side = m.uid === userId ? "right" : "left";
+            const q = query(collection(db, "chat"), orderBy("time"));
 
-                if (m.uid !== userId && !m.seen) {
-                    await updateDoc(doc(db, "chat", d.id), { seen: true });
-                }
+            onSnapshot(q, snap => {
+                chatMessages.innerHTML = "";
 
-                chatMessages.innerHTML += `
+                snap.forEach(async d => {
+
+                    const m = d.data();
+                    const side = m.uid === userId ? "right" : "left";
+
+                    if (m.uid !== userId && !m.seen) {
+                        await updateDoc(doc(db, "chat", d.id), { seen: true });
+                    }
+
+                    chatMessages.innerHTML += `
 <div class="msg ${side}">
 <b>${m.name || "Anonymous 🤍"}</b><br>
 ${m.text}
@@ -1013,9 +1038,16 @@ ${side === "right" ? `<div class="status">${m.seen ? "✔✔" : "✔"}</div>
 <span style="font-size:10px;color:red;cursor:pointer"
 onclick="delMsg('${d.id}')">delete</span>` : ""}
 </div>`;
+
+                });
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
             });
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
+
+        }
+
+
 
         window.sendMessage = async () => {
             const name = chatName.value.trim() || "Anonymous 🤍";
@@ -1099,7 +1131,7 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         const player = document.getElementById("player");
 
         let currentBtn = null;
-        const correctSecretAnswer = "290126";
+        const correctSecretAnswer = "191105";
 
         // STOP EVERYTHING
         function stopAllSongs() {
@@ -1114,12 +1146,12 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         // const enteredDate = new Date(userInput).getTime();
 
         passwordReveal.addEventListener('click', () => {
-            if(inputType.type === 'password'){
+            if (inputType.type === 'password') {
                 inputType.type = 'text';
                 passwordReveal.textContent = 'hide password'
-            }else{
-                inputType.type='password';
-                passwordReveal.textContent = 'Show password' ;
+            } else {
+                inputType.type = 'password';
+                passwordReveal.textContent = 'Show password';
             }
             // alert("hello click is working")
         })
@@ -1130,14 +1162,31 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
             document.getElementById("inputSection").style.display = "block";
         }
 
-        function checkInputAnswer() {
+        async function checkInputAnswer() {
+
             const userInput = document.getElementById("loveAnswer").value.trim();
-            const correctDate = "191105";
+            const correctDate = correctSecretAnswer;
 
             if (userInput === correctDate) {
-                unlockWebsite();
+
+                try {
+
+                    // Firebase authentication
+                    await signInAnonymously(auth);
+
+                    // then unlock your site normally
+                    unlockWebsite();
+
+                } catch (e) {
+
+                    alert("Authentication failed");
+
+                }
+
             } else {
+
                 alert("Verification failed. Try again.");
+
             }
         }
 
