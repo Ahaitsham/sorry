@@ -552,6 +552,7 @@
 
 
 
+
         @keyframes floatUp {
             to {
                 transform: translateY(-110vh);
@@ -561,8 +562,6 @@
 </head>
 
 <body>
-
-
     <nav>
         <div class="nav-logo">Unsaid 🤍</div>
         <div class="nav-links">
@@ -571,6 +570,8 @@
             <a>Music</a>
         </div>
     </nav>
+
+
 
     <div class="main-container">
         <div class="card">
@@ -581,7 +582,22 @@
                     <h1 class="dynamic-msg">Hey babe 🤍</h1>
                     <p class="counter-msg"></p>
                 </div>
+
+
             </div>
+
+            <button id="endBtn" style="
+margin-top:30px;
+padding:12px 20px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+color:white;
+font-weight:600;
+cursor:pointer;
+">
+                End Everything 💔
+            </button>
 
             <div class="message-box">
                 <p>
@@ -1571,6 +1587,61 @@
         <source src="songs/get2.mp3" type="audio/mpeg">
     </audio>
 
+    <div id="endPopup" style="
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+">
+
+        <div style="
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:400px;
+text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+">
+
+            <h2 style="color:#ff4d6d;">Hey baby… 🥺</h2>
+
+            <p style="margin:15px 0;color:#555;">
+                If you press yes…<br><br>
+
+                • Everything we built here will disappear<br>
+                • Our timer will stop forever<br>
+                • This little world… will be gone<br><br>
+
+                There will be no way to bring it back 💔<br><br>
+
+                Are you really sure?
+            </p>
+
+            <button id="confirmEnd" style="
+margin:10px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+">Yes… end it</button>
+
+            <button id="cancelEnd" style="
+margin:10px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ccc;
+cursor:pointer;
+">No</button>
+
+        </div>
+    </div>
+
 
     <script>
         function createHeart() {
@@ -1636,6 +1707,19 @@
             userId = Math.random().toString(36).slice(2);
             localStorage.setItem("uid", userId);
         }
+
+
+
+
+
+
+
+        // localStorage.clear();
+
+
+
+
+
 
         const chatMessages = document.getElementById("chatMessages");
 
@@ -1881,7 +1965,181 @@ onclick="delMsg('${d.id}')">delete</span>` : ""}
         }
     </script>
 
+    <script>
 
+        const endBtn = document.getElementById("endBtn");
+        const popup = document.getElementById("endPopup");
+        const confirmEnd = document.getElementById("confirmEnd");
+        const cancelEnd = document.getElementById("cancelEnd");
+
+
+        if (localStorage.getItem("relationshipEnded") === "true") {
+
+            const finalTime = localStorage.getItem("finalTime") || "";
+
+            document.body.innerHTML = `
+    <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    color:white;
+    font-family:Poppins;
+    text-align:center;
+    ">
+
+    <div>
+        <h1 style="color:#ff4d6d;">It's over… 💔</h1>
+
+        <p style="margin-top:20px;font-size:18px;">
+            ${finalTime} with you… ❤️
+        </p>
+
+        <p style="margin-top:20px;color:#ccc;">
+            felt like a lifetime…<br><br>
+
+                every second counted<br>
+                every moment mattered<br><br>
+
+                and now… it’s all still.<br><br>
+
+                goodbye, my love.
+        </p>
+    </div>
+
+    </div>
+    `;
+        }
+
+        endBtn.onclick = () => {
+            popup.style.display = "flex";
+        };
+
+        cancelEnd.onclick = () => {
+            popup.style.display = "none";
+        };
+
+        function startCinematicEnding(finalTime) {
+
+            // Stop all audio
+            document.querySelectorAll("audio").forEach(a => {
+                a.pause();
+                a.currentTime = 0;
+            });
+
+            // Create overlay
+            const overlay = document.createElement("div");
+            overlay.style.position = "fixed";
+            overlay.style.inset = "0";
+            overlay.style.background = "black";
+            overlay.style.color = "white";
+            overlay.style.display = "flex";
+            overlay.style.flexDirection = "column";
+            overlay.style.justifyContent = "center";
+            overlay.style.alignItems = "center";
+            overlay.style.fontFamily = "Poppins";
+            overlay.style.zIndex = "999999";
+            overlay.style.opacity = "0";
+            overlay.style.transition = "1.5s";
+
+            document.body.appendChild(overlay);
+
+            // Fade in
+            setTimeout(() => {
+                overlay.style.opacity = "1";
+            }, 100);
+
+            // Step 1: typing text
+            let text = "Ending everything…";
+            let i = 0;
+
+            const typing = document.createElement("h2");
+            overlay.appendChild(typing);
+
+            let typingInterval = setInterval(() => {
+                typing.innerText += text[i];
+                i++;
+                if (i >= text.length) {
+                    clearInterval(typingInterval);
+                    startCountdown();
+                }
+            }, 80);
+
+            // Step 2: countdown
+            function startCountdown() {
+                let count = 5;
+
+                const counter = document.createElement("h1");
+                counter.style.marginTop = "20px";
+                overlay.appendChild(counter);
+
+                let countdown = setInterval(() => {
+                    counter.innerText = count;
+                    count--;
+
+                    if (count < 0) {
+                        clearInterval(countdown);
+                        showFinalMessage();
+                    }
+                }, 1000);
+            }
+
+            // Step 3: final message
+            function showFinalMessage() {
+
+                overlay.innerHTML = "";
+
+                const msg = document.createElement("div");
+                msg.style.textAlign = "center";
+
+                msg.innerHTML = `
+            <h1 style="color:#ff4d6d;">It's over… 💔</h1>
+
+            <p style="margin-top:20px;font-size:18px;">
+                ${finalTime} with you… ❤️
+            </p>
+
+            <p style="margin-top:20px;line-height:1.6;color:#ccc;">
+                felt like a lifetime…<br><br>
+
+                every second counted<br>
+                every moment mattered<br><br>
+
+                and now… it’s all still.<br><br>
+
+                goodbye, my love.
+            </p>
+        `;
+
+                overlay.appendChild(msg);
+
+                // Reload after delay (so it stays permanent)
+                setTimeout(() => {
+                    location.reload();
+                }, 5000);
+            }
+        }
+
+        confirmEnd.onclick = () => {
+
+            const startDate = new Date("2026-01-29T00:00:00");
+            const now = new Date();
+
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+            const finalTime = `${days} days ${hours} hours ${minutes} minutes`;
+
+            localStorage.setItem("relationshipEnded", "true");
+            localStorage.setItem("finalTime", finalTime);
+
+            startCinematicEnding(finalTime);
+        };  
+    </script>
 
 </body>
 
